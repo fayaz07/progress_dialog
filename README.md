@@ -2,6 +2,8 @@
 
 A light weight package to show progress dialog
 
+[Get the library](https://pub.dartlang.org/packages/progress_dialog)
+
 ## How to use
 
 Import the package
