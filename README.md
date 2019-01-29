@@ -35,7 +35,7 @@ pr.hide();
 ```
 
 ## Demo
-<img src="./progress.gif" width="350" height="620" alt="Simple App Intro Demo" />
+<img src="progress.gif" width="350" height="620" alt="ProgressDialog Demo" />
 
 
 ## Complete Example
@@ -97,10 +97,6 @@ class MyApp extends StatelessWidget{
             pr.hide();
           });
         }),
-      ),
-    );
-  }
-}
       ),
     );
   }
