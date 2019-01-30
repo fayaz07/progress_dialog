@@ -37,7 +37,7 @@ pr.hide();
 ```
 
 ## Demo
-<img src="progress.gif" width="350" height="620" alt="ProgressDialog Demo" />
+<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress.gif" width="350" height="620" alt="ProgressDialog Demo" />
 
 
 ## Complete Example
