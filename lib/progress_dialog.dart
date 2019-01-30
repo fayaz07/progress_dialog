@@ -27,7 +27,7 @@ class ProgressDialog {
       context: buildContext,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        // return object of type Dialog
+
         return CupertinoAlertDialog(
           content: SizedBox(
             height: 45.0,
@@ -48,33 +48,6 @@ class ProgressDialog {
         );
       },
     );
+    return null;
   }
 }
-/*
-class MessageBox{
-  BuildContext buildContext;
-  String message,title;
-
-  MessageBox(this.buildContext,this.title,this.message){
-    _showDialog();
-  }
-
-  Future _showDialog() {
-    showDialog(
-      context: buildContext,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return CupertinoAlertDialog(
-          title: Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),),
-          content: Padding(padding: const EdgeInsets.all(5.0),child: Text(message,textAlign: TextAlign.center,),),
-          actions: <Widget>[
-            FlatButton(child: Text('Ok'),onPressed: (){
-              Navigator.pop(context);
-            },)
-          ],
-        );
-      },
-    );
-  }
-}*/

@@ -1,1 +1,1 @@
-## [0.0.1] - Initial Release.
+## [1.0.1] - Added example and ready for package release.

@@ -1,8 +1,8 @@
 name: progress_dialog
-description: A light weight package to show progress dialog
-version: 0.0.1
-author: Fayaz
-homepage:
+description: A light weight library to easily manage a progress dialog with simple steps whenever you need to do it. You can easily show and hide it.
+version: 1.0.0
+author: Fayaz<fayazfz07@gmail.com>
+homepage: https://github.com/fayaz07/progress_dialog
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
