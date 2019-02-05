@@ -4,21 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProgressDialog {
+  bool _isShowing = false;
 
   BuildContext buildContext;
   String message = "Loading...";
 
   ProgressDialog(this.buildContext);
 
-  void setMessage(String mess){
+  void setMessage(String mess) {
     this.message = mess;
   }
 
   void show() {
     _showDialog();
+    _isShowing = true;
+  }
+
+  bool isShowing() {
+    return _isShowing;
   }
 
   void hide() {
+    _isShowing = false;
     Navigator.pop(buildContext);
   }
 
@@ -27,7 +34,6 @@ class ProgressDialog {
       context: buildContext,
       barrierDismissible: false,
       builder: (BuildContext context) {
-
         return CupertinoAlertDialog(
           content: SizedBox(
             height: 45.0,

@@ -2,7 +2,7 @@
 
 A light weight package to show progress dialog
 
-[Get the library](https://pub.dartlang.org/packages/progress_dialog)
+[Get the library](https://pub.dartlang.org/packages/progress_dialog) | [Example](https://pub.dartlang.org/packages/progress_dialog#-example-tab-)
 
 ## How to use
 
@@ -34,6 +34,11 @@ pr.show();
 Dismissing the progress dialog
 ```
 pr.hide();
+```
+
+Check if progress dialog is showing
+```
+bool isProgressDialogShowing = pr.isShowing();
 ```
 
 ## Demo

@@ -24,9 +24,12 @@ class MyApp extends StatelessWidget{
             child: Text('Show Dialog',style: TextStyle(color: Colors.white),),
             color: Colors.blue,
             onPressed: (){
-          pr.show();
+            
+            if(!pr.isShowing())
+                pr.show();
           Future.delayed(Duration(seconds: 3)).whenComplete((){
-            pr.hide();
+            if(pr.isShowing())
+                pr.hide();
           });
         }),
       ),
