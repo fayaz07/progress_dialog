@@ -41,6 +41,11 @@ Check if progress dialog is showing
 bool isProgressDialogShowing = pr.isShowing();
 ```
 
+To use a different loading widget like one from [here](https://pub.dartlang.org/packages/flutter_spinkit), use the optional parameter `loadingIndicator`, otherwise it will use the default `CircularProgessIndicator()`
+```
+ProgressDialog(context, loadingIndicator: Widget)
+```
+
 ## Demo
 <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress.gif" width="350" height="620" alt="ProgressDialog Demo" />
 

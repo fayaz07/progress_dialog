@@ -1,5 +1,6 @@
 library progress_dialog;
 
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -8,8 +9,9 @@ class ProgressDialog {
 
   BuildContext buildContext;
   String message = "Loading...";
+  Widget loadingIndicator;
 
-  ProgressDialog(this.buildContext);
+  ProgressDialog(this.buildContext, {this.loadingIndicator = const CircularProgressIndicator()});
 
   void setMessage(String mess) {
     this.message = mess;
@@ -30,28 +32,47 @@ class ProgressDialog {
   }
 
   Future _showDialog() {
-    showDialog(
+    showDialog<dynamic>(
       context: buildContext,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return CupertinoAlertDialog(
-          content: SizedBox(
-            height: 45.0,
-            child: Center(
-              child: Row(
-                children: <Widget>[
-                  SizedBox(width: 10.0),
-                  CircularProgressIndicator(),
-                  SizedBox(width: 20.0),
-                  Text(
-                    message,
-                    style: TextStyle(color: Colors.black, fontSize: 20.0),
-                  )
-                ],
+        return Platform.isAndroid ?
+          AlertDialog(
+            content: SizedBox(
+              height: 45.0,
+              child: Center(
+                child: Row(
+                  children: <Widget>[
+                    const SizedBox(width: 10.0),
+                    loadingIndicator,
+                    const SizedBox(width: 20.0),
+                    Text(
+                      message,
+                      style: TextStyle(color: Colors.black, fontSize: 20.0),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        );
+          ) :
+          CupertinoAlertDialog(
+            content: SizedBox(
+              height: 45.0,
+              child: Center(
+                child: Row(
+                  children: <Widget>[
+                    const SizedBox(width: 10.0),
+                    loadingIndicator,
+                    const SizedBox(width: 20.0),
+                    Text(
+                      message,
+                      style: TextStyle(color: Colors.black, fontSize: 20.0),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
       },
     );
     return null;
