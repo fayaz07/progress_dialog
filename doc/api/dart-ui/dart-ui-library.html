@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
   <meta name="description" content="dart:ui library API docs, for the Dart programming language.">
   <title>dart:ui library - Dart API</title>
   <!-- required because all the links are pseudo-absolute -->
   <base href="..">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="static-assets/github.css">
   <link rel="stylesheet" href="static-assets/styles.css">
   <link rel="icon" href="static-assets/favicon.png">
@@ -34,7 +35,7 @@
 
 <main>
 
-  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+  <div id="dartdoc-sidebar-left" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
     <header id="header-search-sidebar" class="hidden-l">
       <form class="search-sidebar" role="search">
         <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
@@ -66,8 +67,8 @@
     </ol>
   </div>
 
-  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
-    <h1>dart:ui library </h1>
+  <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <div><h1>dart:ui library </h1></div>
 
     <section class="desc markdown">
       <p>Built-in types and core primitives for a Flutter application.</p>
@@ -368,6 +369,12 @@ correspond to shaders as used by <a href="dart-ui/Paint/shader.html">Paint.shade
         <dd>
           Holds a 2D floating-point size. <a href="dart-ui/Size-class.html">[...]</a>
         </dd>
+        <dt id="StrutStyle">
+          <span class="name "><a href="dart-ui/StrutStyle-class.html">StrutStyle</a></span>         
+        </dt>
+        <dd>
+          
+        </dd>
         <dt id="Tangent">
           <span class="name "><a href="dart-ui/Tangent-class.html">Tangent</a></span>         
         </dt>
@@ -397,6 +404,12 @@ correspond to shaders as used by <a href="dart-ui/Paint/shader.html">Paint.shade
         </dt>
         <dd>
           An opaque object that determines the size, position, and rendering of text.
+        </dd>
+        <dt id="Versions">
+          <span class="name "><a href="dart-ui/Versions-class.html">Versions</a></span>         
+        </dt>
+        <dd>
+          Wraps version information for Dart, Skia and Flutter.
         </dd>
         <dt id="Vertices">
           <span class="name "><a href="dart-ui/Vertices-class.html">Vertices</a></span>         
@@ -429,6 +442,15 @@ around their user interface, as exposed by <a href="dart-ui/Window/viewInsets.ht
       <h2>Properties</h2>
 
       <dl class="properties">
+        <dt id="versions" class="property">
+          <span class="name"><a href="dart-ui/versions.html">versions</a></span>
+          <span class="signature">&#8594; <a href="dart-ui/Versions-class.html">Versions</a></span>         
+        </dt>
+        <dd>
+          <a href="dart-ui/Versions-class.html">Versions</a> singleton. This object exposes Dart, Skia and
+Flutter engine versions.
+                  <div class="features">final</div>
+</dd>
         <dt id="window" class="property">
           <span class="name"><a href="dart-ui/window.html">window</a></span>
           <span class="signature">&#8594; <a href="dart-ui/Window-class.html">Window</a></span>         
@@ -558,6 +580,12 @@ given null as if given an empty list.
         <dd>
           Defines various ways to horizontally bound the boxes returned by
 <a href="dart-ui/Paragraph/getBoxesForRange.html">Paragraph.getBoxesForRange</a>.
+        </dd>
+        <dt id="Brightness">
+          <span class="name "><a href="dart-ui/Brightness-class.html">Brightness</a></span>         
+        </dt>
+        <dd>
+          Describes the contrast of a theme or color palette.
         </dd>
         <dt id="Clip">
           <span class="name "><a href="dart-ui/Clip-class.html">Clip</a></span>         
@@ -765,7 +793,7 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
 
   </div> <!-- /.main-content -->
 
-  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+  <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
     <h5>dart:ui library</h5>
     <ol>
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#classes">Classes</a></li>
@@ -815,11 +843,13 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
       <li><a href="dart-ui/Shader-class.html">Shader</a></li>
       <li><a href="dart-ui/Shadow-class.html">Shadow</a></li>
       <li><a href="dart-ui/Size-class.html">Size</a></li>
+      <li><a href="dart-ui/StrutStyle-class.html">StrutStyle</a></li>
       <li><a href="dart-ui/Tangent-class.html">Tangent</a></li>
       <li><a href="dart-ui/TextBox-class.html">TextBox</a></li>
       <li><a href="dart-ui/TextDecoration-class.html">TextDecoration</a></li>
       <li><a href="dart-ui/TextPosition-class.html">TextPosition</a></li>
       <li><a href="dart-ui/TextStyle-class.html">TextStyle</a></li>
+      <li><a href="dart-ui/Versions-class.html">Versions</a></li>
       <li><a href="dart-ui/Vertices-class.html">Vertices</a></li>
       <li><a href="dart-ui/Window-class.html">Window</a></li>
       <li><a href="dart-ui/WindowPadding-class.html">WindowPadding</a></li>
@@ -827,6 +857,7 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
     
     
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#properties">Properties</a></li>
+      <li><a href="dart-ui/versions.html">versions</a></li>
       <li><a href="dart-ui/window.html">window</a></li>
     
       <li class="section-title"><a href="dart-ui/dart-ui-library.html#functions">Functions</a></li>
@@ -845,6 +876,7 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
       <li><a href="dart-ui/BlurStyle-class.html">BlurStyle</a></li>
       <li><a href="dart-ui/BoxHeightStyle-class.html">BoxHeightStyle</a></li>
       <li><a href="dart-ui/BoxWidthStyle-class.html">BoxWidthStyle</a></li>
+      <li><a href="dart-ui/Brightness-class.html">Brightness</a></li>
       <li><a href="dart-ui/Clip-class.html">Clip</a></li>
       <li><a href="dart-ui/ClipOp-class.html">ClipOp</a></li>
       <li><a href="dart-ui/FilterQuality-class.html">FilterQuality</a></li>
@@ -883,7 +915,7 @@ different locations in the rendered string. <a href="dart-ui/TextAffinity-class.
 
 <footer>
   <span class="no-break">
-    progress_dialog 1.0.2
+    progress_dialog 1.0.4
   </span>
 
   
