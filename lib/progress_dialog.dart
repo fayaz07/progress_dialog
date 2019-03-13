@@ -8,11 +8,13 @@ class ProgressDialog {
 
   BuildContext buildContext, _context;
   String message = "Loading...";
+  Color color = Colors.blue;
 
   ProgressDialog(this.buildContext);
 
-  void setMessage(String mess) {
+  void setMessage(String mess Color color) {
     this.message = mess;
+    this.color=color;
   }
 
   void show() {
@@ -42,7 +44,7 @@ class ProgressDialog {
               child: Row(
                 children: <Widget>[
                   SizedBox(width: 10.0),
-                  CircularProgressIndicator(),
+                  CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(this.color)),
                   SizedBox(width: 20.0),
                   Text(
                     message,
