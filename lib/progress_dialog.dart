@@ -8,7 +8,7 @@ enum ProgressDialogType{ CupertinoStyle, Material}
 class ProgressDialog {
   bool _isShowing = false;
 
-  BuildContext buildContext;
+  BuildContext buildContext, _context;
   String message = "Loading...";
   Widget loadingIndicator;
   ProgressDialogType progressDialogType;
@@ -35,7 +35,7 @@ class ProgressDialog {
 
   void hide() {
     _isShowing = false;
-    Navigator.pop(buildContext);
+    Navigator.of(_context).pop();
   }
 
   Future _showDialog() {
@@ -66,6 +66,8 @@ class ProgressDialog {
           ),
         ) :
         CupertinoAlertDialog(
+        _context = context;
+        return CupertinoAlertDialog(
           content: SizedBox(
             height: 45.0,
             child: Center(
