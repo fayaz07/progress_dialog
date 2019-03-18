@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/usr/local/flutter
-FLUTTER_APPLICATION_PATH=/root/AndroidStudioProjects/progress_dialog/example
+FLUTTER_APPLICATION_PATH=/root/AndroidStudioProjects/flutter_projects/progress_dialog/example
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build/ios
