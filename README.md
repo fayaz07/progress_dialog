@@ -41,6 +41,13 @@ Check if progress dialog is showing
 bool isProgressDialogShowing = pr.isShowing();
 ```
 
+To use a different loading widget like one from [here](https://pub.dartlang.org/packages/flutter_spinkit), use the optional parameter `loadingIndicator`, otherwise it will use the default `CircularProgessIndicator()`.
+You may need to modify the default width allotted to the indicator using the optional parameter `loadingIndicatorWidth`. To change the style from Cupertino to Material,
+use the optional parameter `progressDialogType` which takes an enumeration of `ProgressDialogType.Material` or `ProgressDialogType.CupertinoStyle`
+```
+ProgressDialog(context, loadingIndicator: Widget, loadingIndicatorWidth: double, progressDialogType: ProgressDialogType)
+```
+
 ## Demo
 <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress.gif" width="350" height="620" alt="ProgressDialog Demo" />
 
