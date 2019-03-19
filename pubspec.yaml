@@ -1,11 +1,11 @@
 name: progress_dialog
-description: A light weight library to easily manage a progress dialog with simple steps whenever you need to do it. You can easily show and hide it.
-version: 1.0.4
+description: A light weight library to easily manage a progress dialog with simple steps whenever you need to do it. You can easily show and hide it. It is a stateful widget so you can dynamically change the text shown there.
+version: 1.0.5
 author: Fayaz<fayazfz07@gmail.com>
 homepage: https://github.com/fayaz07/progress_dialog
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -22,8 +22,8 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+   - assets/double_ring_loading_io.gif
   #  - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see

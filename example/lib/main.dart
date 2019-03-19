@@ -1,5 +1,6 @@
-import 'package:progress_dialog/progress_dialog.dart';
+//import 'package:progress_dialog/progress_dialog.dart';
 import 'package:flutter/material.dart';
+import 'ppd.dart';
 
 ProgressDialog pr;
 
@@ -10,12 +11,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  int count = 0;
+  var percentage = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    pr = new ProgressDialog(context);
-    pr.setMessage('Please wait...');
+    pr = new ProgressDialog(context,ProgressDialogType.Download);
+    pr.setMessage('Downloading file...');
     return Scaffold(
       body: Center(
         child: RaisedButton(
@@ -26,9 +27,31 @@ class MyApp extends StatelessWidget {
             color: Colors.blue,
             onPressed: () {
               pr.show();
-              Future.delayed(Duration(seconds: 3)).whenComplete(() {
-                pr.hide();
+              Future.delayed(Duration(seconds:2)).then((onvalue){
+                percentage = percentage+30.0;
+                print(percentage);
+                pr.update(progress: percentage,message: "Please wait...");
+                Future.delayed(Duration(seconds: 2)).then((value){
+                  percentage = percentage+30.0;
+                  pr.update(progress: percentage,message: "Few more seconds...");
+                  print(percentage);
+                  Future.delayed(Duration(seconds: 2)).then((value){
+                    percentage = percentage+30.0;
+                    pr.update(progress: percentage,message: "Almost done...");
+                    print(percentage);
+
+                    Future.delayed(Duration(seconds: 2)).then((value){
+                      pr.hide();
+                      percentage = 0.0;
+
+                    });
+                  });
+                });
               });
+            Future.delayed(Duration(seconds: 5)).then((Value){
+              pr.hide();
+            });
+
             }),
       ),
     );
