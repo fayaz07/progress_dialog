@@ -8,19 +8,17 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 **Dart SDK version >= 2.1.0**
 
 ## Demo
-| Normal        | Download      |
-| ------------- |:-------------:|
-|<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif" width="50%" height="50%" alt="ProgressDialog Demo" />       | <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif" width="50%" height="40%" alt="ProgressDialog Demo" /> |
+
+<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif" width="40%" height="40%" alt="Normal Progress" />     <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif" width="40%" height="40%" alt="Download Progress" />
 
 
 ## How to use
 
 Add Package
 ```yaml
-  progress_dialog: ^1.0.5
+  progress_dialog: ^1.0.7
 ```
 
-Import the package
 
 ```dart
 import 'package:progress_dialog/progress_dialog.dart';
