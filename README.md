@@ -10,7 +10,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 ## Demo
 | Normal        | Download      |
 | ------------- |:-------------:|
-|<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress.gif" width="230" height="465" alt="ProgressDialog Demo" />       | <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress.gif" width="230" height="465" alt="ProgressDialog Demo" /> |
+|<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif" width="50%" height="50%" alt="ProgressDialog Demo" />       | <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif" width="50%" height="40%" alt="ProgressDialog Demo" /> |
 
 
 ## How to use
