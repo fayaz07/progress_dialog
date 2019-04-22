@@ -58,20 +58,26 @@ class ProgressDialog {
   }
 }
 
+// ignore: must_be_immutable
 class _MyDialog extends StatefulWidget {
   var _dialog = new _MyDialogState();
 
   update() {
-    _dialog.setState(() {});
+    _dialog.changeState();
   }
 
   @override
+  // ignore: must_be_immutable
   State<StatefulWidget> createState() {
     return _dialog;
   }
 }
 
 class _MyDialogState extends State<_MyDialog> {
+  changeState() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
