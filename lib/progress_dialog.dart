@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 String _dialogMessage = "Loading...";
 enum ProgressDialogType { Normal, Download }
@@ -23,8 +23,8 @@ class ProgressDialog {
     _dialogMessage = mess;
   }
 
-  void update({double progress,String message}) {
-    if(_progressDialogType == ProgressDialogType.Download)
+  void update({double progress, String message}) {
+    if (_progressDialogType == ProgressDialogType.Download)
       _progress = progress;
     _dialogMessage = message;
     _dialog.update();
@@ -50,7 +50,8 @@ class ProgressDialog {
             insetAnimationCurve: Curves.easeInOut,
             insetAnimationDuration: Duration(milliseconds: 100),
             elevation: 10.0,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0))),
             child: _dialog);
       },
     );
@@ -79,30 +80,41 @@ class _MyDialogState extends State<_MyDialog> {
           const SizedBox(width: 15.0),
           SizedBox(
             width: 60.0,
-            child: Image.asset('assets/double_ring_loading_io.gif'),
+            child: Image.asset(
+              'assets/double_ring_loading_io.gif',
+              package: 'progress_dialog',
+            ),
           ),
           const SizedBox(width: 15.0),
           Expanded(
             child: _progressDialogType == ProgressDialogType.Normal
                 ? Text(_dialogMessage,
-                textAlign: TextAlign.justify,
-                style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight: FontWeight.w700))
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.w700))
                 : Stack(
-              children: <Widget>[
-                Positioned(
-                  child: Text(_dialogMessage,
-                      style: TextStyle(color: Colors.black, fontSize: 22.0,fontWeight: FontWeight.w700)),
-                  top: 35.0,
-                ),
-                Positioned(
-                  child: Text("$_progress/100",
-                      style: TextStyle(color: Colors.black, fontSize: 15.0,fontWeight: FontWeight.w400)),
-                  bottom: 15.0,
-                  right: 15.0,
-                ),
-
-              ],
-            ),
+                    children: <Widget>[
+                      Positioned(
+                        child: Text(_dialogMessage,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.w700)),
+                        top: 35.0,
+                      ),
+                      Positioned(
+                        child: Text("$_progress/100",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w400)),
+                        bottom: 15.0,
+                        right: 15.0,
+                      ),
+                    ],
+                  ),
           )
         ]));
   }

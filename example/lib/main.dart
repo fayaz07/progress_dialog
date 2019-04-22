@@ -1,6 +1,6 @@
 //import 'package:progress_dialog/progress_dialog.dart';
 import 'package:flutter/material.dart';
-import 'ppd.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 ProgressDialog pr;
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    pr = new ProgressDialog(context,ProgressDialogType.Download);
+    pr = new ProgressDialog(context, ProgressDialogType.Download);
     pr.setMessage('Downloading file...');
     return Scaffold(
       body: Center(
@@ -27,31 +27,27 @@ class MyApp extends StatelessWidget {
             color: Colors.blue,
             onPressed: () {
               pr.show();
-              Future.delayed(Duration(seconds:2)).then((onvalue){
-                percentage = percentage+30.0;
+              Future.delayed(Duration(seconds: 2)).then((onvalue) {
+                percentage = percentage + 30.0;
                 print(percentage);
-                pr.update(progress: percentage,message: "Please wait...");
-                Future.delayed(Duration(seconds: 2)).then((value){
-                  percentage = percentage+30.0;
-                  pr.update(progress: percentage,message: "Few more seconds...");
+                pr.update(progress: percentage, message: "Please wait...");
+                Future.delayed(Duration(seconds: 2)).then((value) {
+                  percentage = percentage + 30.0;
+                  pr.update(
+                      progress: percentage, message: "Few more seconds...");
                   print(percentage);
-                  Future.delayed(Duration(seconds: 2)).then((value){
-                    percentage = percentage+30.0;
-                    pr.update(progress: percentage,message: "Almost done...");
+                  Future.delayed(Duration(seconds: 2)).then((value) {
+                    percentage = percentage + 30.0;
+                    pr.update(progress: percentage, message: "Almost done...");
                     print(percentage);
 
-                    Future.delayed(Duration(seconds: 2)).then((value){
+                    Future.delayed(Duration(seconds: 2)).then((value) {
                       pr.hide();
                       percentage = 0.0;
-
                     });
                   });
                 });
               });
-            Future.delayed(Duration(seconds: 5)).then((Value){
-              pr.hide();
-            });
-
             }),
       ),
     );
