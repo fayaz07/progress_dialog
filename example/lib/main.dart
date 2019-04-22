@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//    pr = new ProgressDialog(context, ProgressDialogType.Normal);
     pr = new ProgressDialog(context, ProgressDialogType.Download);
     pr.setMessage('Downloading file...');
     return Scaffold(

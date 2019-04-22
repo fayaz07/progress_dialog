@@ -117,3 +117,5 @@ pr.hide();
 bool isProgressDialogShowing = pr.isShowing();
 ```
 
+---
+Loading indicator -> https://loading.io/
