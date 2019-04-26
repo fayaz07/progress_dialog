@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             color: Colors.blue,
             onPressed: () {
               pr.show();
-              Future.delayed(Duration(seconds: 2)).then((onvalue) {
+              /*Future.delayed(Duration(seconds: 2)).then((onvalue) {
                 percentage = percentage + 30.0;
                 print(percentage);
                 pr.update(progress: percentage, message: "Please wait...");
@@ -47,7 +47,14 @@ class MyApp extends StatelessWidget {
                     });
                   });
                 });
+              });*/
+              Future.delayed(Duration(seconds: 10)).then((onValue){
+                print("PR status  ${pr.isShowing()}" );
+                if(pr.isShowing())
+                  pr.hide();
+                print("PR status  ${pr.isShowing()}" );
               });
+
             }),
       ),
     );

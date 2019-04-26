@@ -1,3 +1,5 @@
+## [1.1.0+1] - Added interactive double ring loading indicator, updated documentation
+
 ## [1.0.8] - Added interactive double ring loading indicator, updated documentation
 
 ## [1.0.4] - Bug fixes.

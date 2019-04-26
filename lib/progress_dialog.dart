@@ -7,9 +7,11 @@ enum ProgressDialogType { Normal, Download }
 ProgressDialogType _progressDialogType = ProgressDialogType.Normal;
 double _progress = 0.0;
 
+bool _isShowing = false;
+
 class ProgressDialog {
   _MyDialog _dialog;
-  bool _isShowing = false;
+
   BuildContext _buildContext, _context;
 
   ProgressDialog(
@@ -21,11 +23,16 @@ class ProgressDialog {
 
   void setMessage(String mess) {
     _dialogMessage = mess;
+    debugPrint("ProgressDialog message changed: $mess");
   }
 
   void update({double progress, String message}) {
-    if (_progressDialogType == ProgressDialogType.Download)
+    debugPrint("ProgressDialog message changed: ");
+    if (_progressDialogType == ProgressDialogType.Download) {
+      debugPrint("Old Progress: $_progress, New Progress: $progress");
       _progress = progress;
+    }
+    debugPrint("Old message: $_dialogMessage, New Message: $message");
     _dialogMessage = message;
     _dialog.update();
   }
@@ -37,10 +44,13 @@ class ProgressDialog {
   void hide() {
     _isShowing = false;
     Navigator.of(_context).pop();
+    print('ProgressDialog dismissed');
   }
 
   void show() {
     _dialog = new _MyDialog();
+    _isShowing = true;
+    print('ProgressDialog shown');
     showDialog<dynamic>(
       context: _buildContext,
       barrierDismissible: false,
@@ -74,8 +84,16 @@ class _MyDialog extends StatefulWidget {
 }
 
 class _MyDialogState extends State<_MyDialog> {
+
   changeState() {
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _isShowing = false;
+    print('ProgressDialog dismissed by back button');
   }
 
   @override
@@ -127,7 +145,6 @@ class _MyDialogState extends State<_MyDialog> {
 }
 
 class MessageBox {
-  bool _isShowing = false;
 
   BuildContext buildContext;
   String message = " ", title = " ";

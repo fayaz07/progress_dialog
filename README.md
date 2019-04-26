@@ -9,14 +9,14 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 
 ## Demo
 
-<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif" width="324px" height="576px" alt="Normal Progress" />  <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif" width="324px" height="576px" alt="Download Progress" />
+[Normal ProgressDialog](https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif)  |  [Download ProgressDialog](https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif)
 
 
 ## How to use
 
 Add Package
 ```yaml
-  progress_dialog: ^1.0.8
+  progress_dialog: ^1.1.0+1
 ```
 
 

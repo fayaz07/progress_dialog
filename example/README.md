@@ -59,4 +59,4 @@ class MyApp extends StatelessWidget {
 ```
 ## Demo
 
-<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif" width="324px" height="576px" alt="Normal Progress" />  <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif" width="324px" height="576px" alt="Download Progress" />
+<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif" width="324" height="576" alt="Normal Progress" />  <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif" width="324" height="576" alt="Download Progress" />
