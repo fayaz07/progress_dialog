@@ -13,6 +13,8 @@ class ProgressDialog {
   void setMessage(String mess){
     this.message = mess;
   }
+  
+  
 
   void show() {
     _showDialog();
