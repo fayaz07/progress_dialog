@@ -9,8 +9,8 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 
 ## Demo
 
-[Normal ProgressDialog](https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_1.gif)  |  [Download ProgressDialog](https://raw.githubusercontent.com/fayaz07/progress_dialog/master/stateful_2.gif)
-
+<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo.gif" alt="Demo" />
+<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo_2.gif" alt="Demo" />
 
 ## How to use
 
