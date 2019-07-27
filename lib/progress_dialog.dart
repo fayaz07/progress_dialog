@@ -42,29 +42,33 @@ class ProgressDialog {
   }
 
   void hide() {
-    _isShowing = false;
-    Navigator.of(_context).pop();
-    print('ProgressDialog dismissed');
+    if (_isShowing) {
+      _isShowing = false;
+      Navigator.of(_context).pop();
+      debugPrint('ProgressDialog dismissed');
+    }
   }
 
   void show() {
-    _dialog = new _MyDialog();
-    _isShowing = true;
-    print('ProgressDialog shown');
-    showDialog<dynamic>(
-      context: _buildContext,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        _context = context;
-        return Dialog(
-            insetAnimationCurve: Curves.easeInOut,
-            insetAnimationDuration: Duration(milliseconds: 100),
-            elevation: 10.0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0))),
-            child: _dialog);
-      },
-    );
+    if (!_isShowing) {
+      _dialog = new _MyDialog();
+      _isShowing = true;
+      debugPrint('ProgressDialog shown');
+      showDialog<dynamic>(
+        context: _buildContext,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          _context = context;
+          return Dialog(
+              insetAnimationCurve: Curves.easeInOut,
+              insetAnimationDuration: Duration(milliseconds: 100),
+              elevation: 10.0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              child: _dialog);
+        },
+      );
+    }
   }
 }
 
@@ -84,7 +88,6 @@ class _MyDialog extends StatefulWidget {
 }
 
 class _MyDialogState extends State<_MyDialog> {
-
   changeState() {
     setState(() {});
   }
@@ -93,7 +96,7 @@ class _MyDialogState extends State<_MyDialog> {
   void dispose() {
     super.dispose();
     _isShowing = false;
-    print('ProgressDialog dismissed by back button');
+    debugPrint('ProgressDialog dismissed by back button');
   }
 
   @override
@@ -145,7 +148,6 @@ class _MyDialogState extends State<_MyDialog> {
 }
 
 class MessageBox {
-
   BuildContext buildContext;
   String message = " ", title = " ";
 
