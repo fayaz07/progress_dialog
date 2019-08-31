@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    pr = new ProgressDialog(context,type: ProgressDialogType.Normal);
-    pr = new ProgressDialog(context, type: ProgressDialogType.Download);
+
+    pr = new ProgressDialog(context,type: ProgressDialogType.Normal,isDismissible: false);
+//    pr = new ProgressDialog(context, type: ProgressDialogType.Download);
 
     pr.style(
       message: 'Downloading file...',
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
             color: Colors.blue,
             onPressed: () {
               pr.show();
+/*
               Future.delayed(Duration(seconds: 2)).then((onvalue) {
                 percentage = percentage + 30.0;
                 print(percentage);
@@ -75,14 +77,14 @@ class MyApp extends StatelessWidget {
                     });
                   });
                 });
-              });
-              /*
+              });*/
+
               Future.delayed(Duration(seconds: 10)).then((onValue){
                 print("PR status  ${pr.isShowing()}" );
                 if(pr.isShowing())
                   pr.hide();
                 print("PR status  ${pr.isShowing()}" );
-              });*/
+              });
             }),
       ),
     );

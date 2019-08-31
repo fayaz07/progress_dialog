@@ -9,7 +9,7 @@ double _progress = 0.0, _maxProgress = 100.0;
 bool _isShowing = false;
 BuildContext _context, _dismissingContext;
 ProgressDialogType _progressDialogType;
-bool _barrierDismissible;
+bool _barrierDismissible = true;
 
 TextStyle _progressTextStyle = TextStyle(
         color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
@@ -32,7 +32,7 @@ class ProgressDialog {
       {ProgressDialogType type, bool isDismissible}) {
     _context = context;
     _progressDialogType = type ?? ProgressDialogType.Normal;
-    _barrierDismissible = isDismissible ?? false;
+    _barrierDismissible = isDismissible ?? true;
   }
 
   void style(
@@ -107,18 +107,23 @@ class ProgressDialog {
 
       showDialog<dynamic>(
         context: _context,
-        barrierDismissible: _barrierDismissible,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           _dismissingContext = context;
-          return Dialog(
-              backgroundColor: _backgroundColor,
-              insetAnimationCurve: _insetAnimCurve,
-              insetAnimationDuration: Duration(milliseconds: 100),
-              elevation: _dialogElevation,
-              shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(_borderRadius))),
-              child: _dialog);
+          return WillPopScope(
+            onWillPop: () {
+              return Future.value(_barrierDismissible);
+            },
+            child: Dialog(
+                backgroundColor: _backgroundColor,
+                insetAnimationCurve: _insetAnimCurve,
+                insetAnimationDuration: Duration(milliseconds: 100),
+                elevation: _dialogElevation,
+                shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(_borderRadius))),
+                child: _dialog),
+          );
         },
       );
     } else {
@@ -148,9 +153,9 @@ class _BodyState extends State<_Body> {
 
   @override
   void dispose() {
-    super.dispose();
     _isShowing = false;
     debugPrint('ProgressDialog dismissed by back button');
+    super.dispose();
   }
 
   @override
