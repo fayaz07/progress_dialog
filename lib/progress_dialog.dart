@@ -155,6 +155,11 @@ class _BodyState extends State<_Body> {
   void dispose() {
     _isShowing = false;
     debugPrint('ProgressDialog dismissed by back button');
+    if (Navigator.of(_dismissingContext).canPop()) {
+      try {
+        Navigator.of(_dismissingContext).pop();
+      } catch (_) {}
+    }
     super.dispose();
   }
 
