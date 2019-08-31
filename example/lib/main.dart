@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    pr = new ProgressDialog(context,type: ProgressDialogType.Normal,isDismissible: false);
+    pr = new ProgressDialog(context,
+        type: ProgressDialogType.Normal, isDismissible: false);
 //    pr = new ProgressDialog(context, type: ProgressDialogType.Download);
 
     pr.style(
@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
       messageTextStyle: TextStyle(
           color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
     );
-
 
     return Scaffold(
       body: Center(
@@ -79,11 +78,10 @@ class MyApp extends StatelessWidget {
                 });
               });*/
 
-              Future.delayed(Duration(seconds: 10)).then((onValue){
-                print("PR status  ${pr.isShowing()}" );
-                if(pr.isShowing())
-                  pr.hide();
-                print("PR status  ${pr.isShowing()}" );
+              Future.delayed(Duration(seconds: 10)).then((onValue) {
+                print("PR status  ${pr.isShowing()}");
+                if (pr.isShowing()) pr.hide();
+                print("PR status  ${pr.isShowing()}");
               });
             }),
       ),
