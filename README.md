@@ -39,16 +39,16 @@ ProgressDialog pr;
 Initialise the **pr** object inside the **build()** method passing context to it
 
 <ol>
-<li> Initialize the ProgressDialog object
-  
+<li> Initialize the ProgressDialog object <br>  
+
 ```dart
 pr = new ProgressDialog(context);
 ```
 </li>
 
 
-<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional type parameter and specify if you want your dialog to dismiss when back button is pressed isDismissible parameter (Optional)
-  
+<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional <b>type</b> parameter and specify if you want your dialog to dismiss when back button is pressed <b>isDismissible</b> parameter (Optional) <br/>
+
 ```dart
 //For normal dialog
 pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true/false);
@@ -59,7 +59,7 @@ pr = new ProgressDialog(context,type: ProgressDialogType.Download, isDismissible
 </li>
 
   
-<li>Style the progress dialog (Optional)
+<li>Style the progress dialog (Optional)<br/>
 
 ```dart
 pr.style(
@@ -77,20 +77,22 @@ pr.style(
      color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600)
   );
 ```
-
-</li>
-
-<li>Showing the progress dialog
-
-```dart
-pr.show();
+```note
+Note: You don't need to use all parameters, all of them are optional
 ```
 
 </li>
 
-<li>
-Dynamically update the content shown out there
+<li>Showing the progress dialog<br>
+  
+```dart
+pr.show();
+```
+</li>
 
+<li>
+Dynamically update the content shown out there <br/>
+  
 ```dart
 pr.update(
   progress: 50.0,
@@ -104,17 +106,20 @@ pr.update(
     color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
   );
 ```
-
+```note
+Note: You don't need to use all parameters, all of them are optional
+```
 </li>
 
-<li>
-Dismissing the progress dialog
 
+<li>
+Dismissing the progress dialog<br/>
+  
 ```dart
 pr.hide();
 ```
-
 </li>  
+
 </ol>
 
 
@@ -144,7 +149,7 @@ If you don't like to configure/style the dialog and continue with the default st
 | ProgressTextStyle   |    color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400 |
 
 
-> Well let's discuss limits for configuring it
+#### Well let's discuss limits for configuring it
 
 | Attribute           | Can be updated during instantiating   | Can be updated during styling   |Can be updated during dialog is shown |
 | -------------       | :-------------------------------:     |:------------------------------: |:-------------------------------:     |
@@ -168,10 +173,11 @@ Pull requests and issues are always welcome!
   <li> Fork the [repository](https://github.com/fayaz07/progress_dialog) </li>
   <li> Clone it to your local machine </li>
   <li> Open the project in your favourite editor </li>  
-  <li> Open cmd/terminal and run **flutter clean** and then **flutter packages get** </li>
+  <li> Open cmd/terminal and run <b>flutter clean</b> and then <b>flutter packages get</b> </li>
   <li> Make the changes </li>
-  <li> Create a **Pull Request** </li>
+  <li> Create a <b>Pull Request</b> </li>
 </ol>
+
 #### View the issues [here](https://github.com/fayaz07/progress_dialog/issues)
 
 ---
