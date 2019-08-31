@@ -15,6 +15,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 
 <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo.gif" alt="Demo"/> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo_1.gif" alt="Demo" />
 
+---
 
 ## Installation
 [![Pub](https://img.shields.io/badge/pub-1.2.0-blue)](https://pub.dev/packages/progress_dialog)
@@ -46,10 +47,9 @@ pr = new ProgressDialog(context);
 </li>
 
 
-<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional `type` parameter and specify if you want your dialog to dismiss when back button is pressed `isDismissible` parameter (Optional)
+<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional type parameter and specify if you want your dialog to dismiss when back button is pressed isDismissible parameter (Optional)
   
 ```dart
-    
 //For normal dialog
 pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true/false);
     
@@ -125,30 +125,53 @@ bool isProgressDialogShowing = pr.isShowing();
 print(isProgressDialogShowing);
 ```
 
+---
+
 ### Default configuration/styles
 
 If you don't like to configure/style the dialog and continue with the default style, it's okay but just have a look at our default configuration.
 
-| Attribute     | Value   |
-| ------------- | -----:|
-| col 3 is      | $1600 |
-| col 2 is      |   $12 |
-| zebra stripes |    $1 |
+| Attribute           | Value   |
+| -------------       | :-----:|
+| Dismissible         |    true |
+| ProgressDialogType  |    ProgressDialogType.Normal |
+| BackgroundColor     | Colors.white |
+| BorderRadius        |   RoundedRectangularBorder(radius: 8.0) |
+| AnimationCurve      |    Curves.easeInOut |
+| Elevation           |    8.0 |
+| ProgressWidget      |    Double_rings_loding_indicator |
+| MessageTextStyle    |    color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600 |
+| ProgressTextStyle   |    color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400 |
 
 
+> Well let's discuss limits for configuring it
+
+| Attribute           | Can be updated during instantiating   | Can be updated during styling   |Can be updated during dialog is shown |
+| -------------       | :-------------------------------:     |:------------------------------: |:-------------------------------:     |
+| Dismissible         | Yes                                   |No                               |No                                    |
+| ProgressDialogType  | Yes                                   |No                               |No                                    |
+| BackgroundColor     | No                                    |Yes                              |No                                    |
+| BorderRadius        | No                                    |Yes                              |No                                    |
+| AnimationCurve      | No                                    |Yes                              |No                                    |
+| Elevation           | No                                    |Yes                              |No                                    |
+| ProgressWidget      | No                                    |Yes                              |Yes                                   |
+| MessageTextStyle    | No                                    |Yes                              |Yes                                   |
+| ProgressTextStyle   | No                                    |Yes                              |Yes                                   |
+
+---
 
 ### Want to contribute? 
 Pull requests and issues are always welcome!
 
 #### How to contribute?
-
-* Fork the [repository](https://github.com/fayaz07/progress_dialog)
-* Clone it to your local machine
-* Open the project in your favourite editor
-* Open cmd/terminal and run **flutter clean** and then **flutter packages get**
-* Make the changes
-* Create a **Pull Request**
-
+<ol>
+  <li> Fork the [repository](https://github.com/fayaz07/progress_dialog) </li>
+  <li> Clone it to your local machine </li>
+  <li> Open the project in your favourite editor </li>  
+  <li> Open cmd/terminal and run **flutter clean** and then **flutter packages get** </li>
+  <li> Make the changes </li>
+  <li> Create a **Pull Request** </li>
+</ol>
 #### View the issues [here](https://github.com/fayaz07/progress_dialog/issues)
 
 ---
