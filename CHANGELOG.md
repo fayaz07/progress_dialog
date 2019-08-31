@@ -1,3 +1,5 @@
+## [1.2.0] - Added custom styling for widget in runtime, background color, elevation, border-radius, text-styles, anim-curve, max-progress and fixed old bugs
+
 ## [1.1.0+1] - Added interactive double ring loading indicator, updated documentation
 
 ## [1.0.8] - Added interactive double ring loading indicator, updated documentation

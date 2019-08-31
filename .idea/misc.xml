@@ -5,4 +5,7 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="ProjectType">
+    <option name="id" value="io.flutter" />
+  </component>
 </project>
