@@ -46,15 +46,15 @@ pr = new ProgressDialog(context);
 </li>
 
 
-<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional type parameter (Optional)
+<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional `type` parameter and specify if you want your dialog to dismiss when back button is pressed `isDismissible` parameter (Optional)
   
 ```dart
     
 //For normal dialog
-pr = new ProgressDialog(context,type: ProgressDialogType.Normal);
+pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true/false);
     
 //For showing progress percentage
-pr = new ProgressDialog(context,type: ProgressDialogType.Download);
+pr = new ProgressDialog(context,type: ProgressDialogType.Download, isDismissible: true/false);
 ```
 </li>
 
@@ -125,8 +125,20 @@ bool isProgressDialogShowing = pr.isShowing();
 print(isProgressDialogShowing);
 ```
 
+### Default configuration/styles
+
+If you don't like to configure/style the dialog and continue with the default style, it's okay but just have a look at our default configuration.
+
+| Attribute     | Value   |
+| ------------- | -----:|
+| col 3 is      | $1600 |
+| col 2 is      |   $12 |
+| zebra stripes |    $1 |
+
+
+
 ### Want to contribute? 
-Pull requests are always welcome!
+Pull requests and issues are always welcome!
 
 #### How to contribute?
 
@@ -135,7 +147,7 @@ Pull requests are always welcome!
 * Open the project in your favourite editor
 * Open cmd/terminal and run **flutter clean** and then **flutter packages get**
 * Make the changes
-* Create a **pull request**
+* Create a **Pull Request**
 
 #### View the issues [here](https://github.com/fayaz07/progress_dialog/issues)
 
