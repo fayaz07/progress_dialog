@@ -2,7 +2,11 @@
 
 A light weight package to show progress dialog. As it is a stateful widget, you can change the text shown on the dialog dynamically.
 
-[Get the library](https://pub.dartlang.org/packages/progress_dialog) | [Example](https://pub.dartlang.org/packages/progress_dialog#-example-tab-)
+[![Sponsor!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://github.com/fayaz07/progress_dialog) &nbsp; &nbsp; [![LinkedIn](https://img.shields.io/badge/LinkedIn-in-0e76a8)](https://www.linkedin.com/in/fayaz07) &nbsp;&nbsp; [![Follow](https://img.shields.io/github/followers/fayaz07?style=social)](https://github.com/fayaz07) &nbsp;&nbsp; [![Fork](https://img.shields.io/github/forks/fayaz07/progress_dialog?style=social)](https://github.com/fayaz07/progress_dialog/fork) &nbsp;&nbsp;  [![Star](https://img.shields.io/github/stars/fayaz07/progress_dialog?style=social)](https://github.com/fayaz07/progress_dialog/star) 
+
+[![Get the library](https://img.shields.io/badge/Get%20library-pub-blue)](https://pub.dev/packages/progress_dialog) &nbsp; [![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/progress_dialog#-example-tab-)
+
+
 
 ## Supported Dart Versions
 **Dart SDK version >= 2.1.0**
@@ -11,13 +15,17 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 
 <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo.gif" alt="Demo"/> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo_1.gif" alt="Demo" />
 
-## How to use
+
+## Installation
+[![Pub](https://img.shields.io/badge/pub-1.2.0-blue)](https://pub.dev/packages/progress_dialog)
 
 Add the Package
 ```yaml
+dependencies:
   progress_dialog: ^1.2.0
 ```
 
+## How to use
 
 ```dart
 import 'package:progress_dialog/progress_dialog.dart';
@@ -27,22 +35,26 @@ Create an instance of ProgressDialog
 ProgressDialog pr;
 ```
 
-Initialise the *pr* object inside the **build()** method passing context to it
+Initialise the **pr** object inside the **build()** method passing context to it
 
-## For Normal Progress Dialog
 <ol>
 <li> Initialize the ProgressDialog object
   
 ```dart
-    pr = new ProgressDialog(context);
+pr = new ProgressDialog(context);
 ```
 </li>
 
 
-<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional *type* parameter (Optional)
+<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional type parameter (Optional)
   
 ```dart
-    pr = new ProgressDialog(context,type: ProgressDialogType.Normal);
+    
+//For normal dialog
+pr = new ProgressDialog(context,type: ProgressDialogType.Normal);
+    
+//For showing progress percentage
+pr = new ProgressDialog(context,type: ProgressDialogType.Download);
 ```
 </li>
 
@@ -50,20 +62,20 @@ Initialise the *pr* object inside the **build()** method passing context to it
 <li>Style the progress dialog (Optional)
 
 ```dart
-    pr.style(
-      message: 'Downloading file...',
-      borderRadius: 10.0,
-      backgroundColor: Colors.white,
-      progressWidget: CircularProgressIndicator(),
-      elevation: 10.0,
-      insetAnimCurve: Curves.easeInOut,
-      progress: 0.0,
-      maxProgress: 100.0,
-      progressTextStyle: TextStyle(
-          color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
-      messageTextStyle: TextStyle(
-          color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
-    );
+pr.style(
+  message: 'Downloading file...',
+  borderRadius: 10.0,
+  backgroundColor: Colors.white,
+  progressWidget: CircularProgressIndicator(),
+  elevation: 10.0,
+  insetAnimCurve: Curves.easeInOut,
+  progress: 0.0,
+  maxProgress: 100.0,
+  progressTextStyle: TextStyle(
+     color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
+  messageTextStyle: TextStyle(
+     color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600)
+  );
 ```
 
 </li>
@@ -71,7 +83,7 @@ Initialise the *pr* object inside the **build()** method passing context to it
 <li>Showing the progress dialog
 
 ```dart
-    pr.show();
+pr.show();
 ```
 
 </li>
@@ -80,17 +92,17 @@ Initialise the *pr* object inside the **build()** method passing context to it
 Dynamically update the content shown out there
 
 ```dart
-    pr.update(
-      progress: 50.0,
-      message: "Please wait...",
-      progressWidget: Container(
-          padding: EdgeInsets.all(8.0), child: CircularProgressIndicator()),
-      maxProgress: 100.0,
-      progressTextStyle: TextStyle(
-          color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
-      messageTextStyle: TextStyle(
-          color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
-    );
+pr.update(
+  progress: 50.0,
+  message: "Please wait...",
+  progressWidget: Container(
+    padding: EdgeInsets.all(8.0), child: CircularProgressIndicator()),
+  maxProgress: 100.0,
+  progressTextStyle: TextStyle(
+    color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
+  messageTextStyle: TextStyle(
+    color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
+  );
 ```
 
 </li>
@@ -99,7 +111,7 @@ Dynamically update the content shown out there
 Dismissing the progress dialog
 
 ```dart
-    pr.hide();
+pr.hide();
 ```
 
 </li>  
@@ -118,12 +130,14 @@ Pull requests are always welcome!
 
 #### How to contribute?
 
-* Fork the repository
+* Fork the [repository](https://github.com/fayaz07/progress_dialog)
 * Clone it to your local machine
 * Open the project in your favourite editor
 * Open cmd/terminal and run **flutter clean** and then **flutter packages get**
 * Make the changes
-* Create a *pull request*
+* Create a **pull request**
+
+#### View the issues [here](https://github.com/fayaz07/progress_dialog/issues)
 
 ---
 Loading indicator -> https://loading.io/
