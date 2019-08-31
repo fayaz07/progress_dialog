@@ -2,7 +2,7 @@
 
 A light weight package to show progress dialog. As it is a stateful widget, you can change the text shown on the dialog dynamically.
 
-[![Sponsor!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://github.com/fayaz07/progress_dialog) &nbsp; [![LinkedIn](https://img.shields.io/badge/LinkedIn-in-0e76a8)](https://www.linkedin.com/in/fayaz07) &nbsp; [![Follow](https://img.shields.io/github/followers/fayaz07?style=social)](https://github.com/fayaz07) &nbsp; [![Fork](https://img.shields.io/github/forks/fayaz07/progress_dialog?style=social)](https://github.com/fayaz07/progress_dialog/fork) &nbsp; [![Star](https://img.shields.io/github/stars/fayaz07/progress_dialog?style=social)](https://github.com/fayaz07/progress_dialog/star) 
+[![Sponsor!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://github.com/fayaz07/progress_dialog) &nbsp; [![LinkedIn](https://img.shields.io/badge/LinkedIn-in-0e76a8)](https://www.linkedin.com/in/fayaz07) &nbsp; [![Follow](https://img.shields.io/github/followers/fayaz07?style=social)](https://github.com/fayaz07) &nbsp; [![Fork](https://img.shields.io/github/forks/fayaz07/progress_dialog?style=social)](https://github.com/fayaz07/progress_dialog/fork) &nbsp; [![Star](https://img.shields.io/github/stars/fayaz07/progress_dialog?style=social)](https://github.com/fayaz07/progress_dialog/star) &nbsp; [![Watches](https://img.shields.io/github/watchers/fayaz07/progress_dialog?style=social)](https://github.com/fayaz07/progress_dialog/) 
 
 [![Get the library](https://img.shields.io/badge/Get%20library-pub-blue)](https://pub.dev/packages/progress_dialog) &nbsp; [![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/progress_dialog#-example-tab-)
 
