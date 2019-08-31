@@ -180,5 +180,7 @@ Pull requests and issues are always welcome!
 
 #### View the issues [here](https://github.com/fayaz07/progress_dialog/issues)
 
+#### This library is only tested for Android, iOS contributors are most welcome
+
 ---
 Loading indicator -> https://loading.io/
