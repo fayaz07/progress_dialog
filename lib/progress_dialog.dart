@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -166,14 +168,10 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100.0,
+      height: Platform.isIOS ? 80.0 : 100.0,
       child: Row(children: <Widget>[
         const SizedBox(width: 10.0),
-        SizedBox(
-          width: 60.0,
-          height: 60.0,
-          child: _progressWidget,
-        ),
+        platformSizedBox(),
         const SizedBox(width: 15.0),
         Expanded(
           child: _progressDialogType == ProgressDialogType.Normal
@@ -197,5 +195,22 @@ class _BodyState extends State<_Body> {
         const SizedBox(width: 10.0)
       ]),
     );
+  }
+
+  Widget platformSizedBox(){
+    if (Platform.isIOS) {
+      return SizedBox(
+          width: 20.0,
+          height: 20.0,
+          child: _progressWidget,
+        );
+    }
+    else{
+      return SizedBox(
+          width: 60.0,
+          height: 60.0,
+          child: _progressWidget,
+        );
+    }
   }
 }

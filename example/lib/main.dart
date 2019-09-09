@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -22,7 +25,11 @@ class MyApp extends StatelessWidget {
       message: 'Downloading file...',
       borderRadius: 10.0,
       backgroundColor: Colors.white,
-      progressWidget: CircularProgressIndicator(),
+      progressWidget: Platform.isIOS
+          ? Scaffold(
+              body: CupertinoActivityIndicator(animating: true, radius: 10.0),
+            )
+          : CircularProgressIndicator(),
       elevation: 10.0,
       insetAnimCurve: Curves.easeInOut,
       progress: 0.0,
