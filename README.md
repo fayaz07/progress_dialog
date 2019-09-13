@@ -11,10 +11,10 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 ## Supported Dart Versions
 **Dart SDK version >= 2.1.0**
 
+
 ## Demo
 
-<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo.gif" alt="Demo"/> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo_1.gif" alt="Demo" />
-
+<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress_dialog_1.png" height="35%" width="35%"  alt="Normal dialog Demo"/> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress_dialog_2.png"   height="35%" width="35%" alt="Download dialog Demo" />
 
 
 ## Installation
@@ -139,6 +139,11 @@ print(isProgressDialogShowing);
 ```
 
 ---
+
+## Demo
+
+<img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/pd_demo_nd.gif" alt="Normal dialog Demo"/> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/pd_demo_dd.gif" alt="Download dialog Demo" />
+
 
 ### Default configuration/styles
 
