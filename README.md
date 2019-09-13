@@ -55,10 +55,10 @@ pr = new ProgressDialog(context);
 
 ```dart
 //For normal dialog
-pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true/false);
+pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true/false, showLogs: true/false);
     
 //For showing progress percentage
-pr = new ProgressDialog(context,type: ProgressDialogType.Download, isDismissible: true/false);
+pr = new ProgressDialog(context,type: ProgressDialogType.Download, isDismissible: true/false, showLogs: true/false);
 ```
 </li>
 
