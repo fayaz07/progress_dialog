@@ -50,7 +50,9 @@ class MyApp extends StatelessWidget {
               Future.delayed(Duration(seconds: 10)).then((onValue){
                 print("PR status  ${pr.isShowing()}" );
                 if(pr.isShowing())
-                  pr.hide();
+                  pr.hide().then((isHidden) {
+                    print(isHidden);
+                  });
                 print("PR status  ${pr.isShowing()}" );
               });
 
@@ -139,7 +141,9 @@ class MyApp extends StatelessWidget {
                     print(percentage);
 
                     Future.delayed(Duration(seconds: 2)).then((value) {
-                      pr.hide();
+                      pr.hide().then((isHidden) {
+                         print(isHidden);
+                      });
                       percentage = 0.0;
                     });
                   });
@@ -148,6 +152,71 @@ class MyApp extends StatelessWidget {
 
             }),
       ),
+    );
+  }
+}
+
+```
+
+
+## Complete Example for Switching between to Screens
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
+
+ProgressDialog pr;
+
+void main() {
+  runApp(MaterialApp(
+    home: FirstScreen(),
+  ));
+}
+
+class FirstScreen extends StatefulWidget {
+  @override
+  _FirstScreenState createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  ProgressDialog pr;
+
+  @override
+  Widget build(BuildContext context) {
+    pr = new ProgressDialog(context);
+    pr.style(message: 'Please wait...');
+
+    return Scaffold(
+      body: Center(
+        child: RaisedButton(
+          child: Text('Show dialog and go to next screen',
+              style: TextStyle(color: Colors.white)),
+          color: Colors.blueAccent,
+          onPressed: () {
+            pr.show();
+            Future.delayed(Duration(seconds: 3)).then((value) {
+              pr.hide().whenComplete(() {
+                Navigator.of(context).push(CupertinoPageRoute(
+                    builder: (BuildContext context) => SecondScreen()));
+              });
+            });
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatefulWidget {
+  @override
+  _SecondScreenState createState() => _SecondScreenState();
+}
+
+class _SecondScreenState extends State<SecondScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text('I am second screen')),
     );
   }
 }

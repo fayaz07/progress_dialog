@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -14,15 +15,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    pr = new ProgressDialog(context,
-        type: ProgressDialogType.Normal, isDismissible: false);
-//    pr = new ProgressDialog(context, type: ProgressDialogType.Download);
+//    pr = new ProgressDialog(context,
+//        type: ProgressDialogType.Normal, isDismissible: false);
+    pr = new ProgressDialog(context, type: ProgressDialogType.Download);
 
     pr.style(
       message: 'Downloading file...',
       borderRadius: 10.0,
       backgroundColor: Colors.white,
-      progressWidget: CircularProgressIndicator(),
       elevation: 10.0,
       insetAnimCurve: Curves.easeInOut,
       progress: 0.0,
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             color: Colors.blue,
             onPressed: () {
               pr.show();
-/*
+
               Future.delayed(Duration(seconds: 2)).then((onvalue) {
                 percentage = percentage + 30.0;
                 print(percentage);
@@ -52,12 +52,17 @@ class MyApp extends StatelessWidget {
                   progress: percentage,
                   message: "Please wait...",
                   progressWidget: Container(
-                      padding: EdgeInsets.all(8.0), child: CircularProgressIndicator()),
+                      padding: EdgeInsets.all(8.0),
+                      child: CircularProgressIndicator()),
                   maxProgress: 100.0,
                   progressTextStyle: TextStyle(
-                      color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
+                      color: Colors.black,
+                      fontSize: 13.0,
+                      fontWeight: FontWeight.w400),
                   messageTextStyle: TextStyle(
-                      color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600),
+                      color: Colors.black,
+                      fontSize: 19.0,
+                      fontWeight: FontWeight.w600),
                 );
 
                 Future.delayed(Duration(seconds: 2)).then((value) {
@@ -71,20 +76,73 @@ class MyApp extends StatelessWidget {
                     print(percentage);
 
                     Future.delayed(Duration(seconds: 2)).then((value) {
-                      pr.hide();
+                      pr.hide().whenComplete(() {
+                        print(pr.isShowing());
+                      });
                       percentage = 0.0;
                     });
                   });
                 });
-              });*/
+              });
 
               Future.delayed(Duration(seconds: 10)).then((onValue) {
                 print("PR status  ${pr.isShowing()}");
-                if (pr.isShowing()) pr.hide();
+                if (pr.isShowing())
+                  pr.hide().then((isHidden) {
+                    print(isHidden);
+                  });
                 print("PR status  ${pr.isShowing()}");
               });
             }),
       ),
+    );
+  }
+}
+
+class FirstScreen extends StatefulWidget {
+  @override
+  _FirstScreenState createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  ProgressDialog pr;
+
+  @override
+  Widget build(BuildContext context) {
+    pr = new ProgressDialog(context, showLogs: true);
+    pr.style(message: 'Please wait...');
+
+    return Scaffold(
+      body: Center(
+        child: RaisedButton(
+          child: Text('Show dialog and go to next screen',
+              style: TextStyle(color: Colors.white)),
+          color: Colors.blueAccent,
+          onPressed: () {
+            pr.show();
+            Future.delayed(Duration(seconds: 3)).then((value) {
+              pr.hide().whenComplete(() {
+                Navigator.of(context).push(CupertinoPageRoute(
+                    builder: (BuildContext context) => SecondScreen()));
+              });
+            });
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatefulWidget {
+  @override
+  _SecondScreenState createState() => _SecondScreenState();
+}
+
+class _SecondScreenState extends State<SecondScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Text('I am second screen')),
     );
   }
 }

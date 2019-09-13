@@ -55,6 +55,7 @@
           <value>
             <list>
               <option value="/usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.2/lib" />
+              <option value="/usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.3/lib" />
             </list>
           </value>
         </entry>
@@ -209,6 +210,7 @@
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.2/lib" />
+      <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.3/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-0.1.2/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.4/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.5/lib" />

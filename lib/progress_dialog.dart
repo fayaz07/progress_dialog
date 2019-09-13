@@ -9,7 +9,7 @@ double _progress = 0.0, _maxProgress = 100.0;
 bool _isShowing = false;
 BuildContext _context, _dismissingContext;
 ProgressDialogType _progressDialogType;
-bool _barrierDismissible = true;
+bool _barrierDismissible = true, _showLogs = false;
 
 TextStyle _progressTextStyle = TextStyle(
         color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
@@ -29,10 +29,11 @@ class ProgressDialog {
   _Body _dialog;
 
   ProgressDialog(BuildContext context,
-      {ProgressDialogType type, bool isDismissible}) {
+      {ProgressDialogType type, bool isDismissible, bool showLogs}) {
     _context = context;
     _progressDialogType = type ?? ProgressDialogType.Normal;
     _barrierDismissible = isDismissible ?? true;
+    _showLogs = showLogs ?? false;
   }
 
   void style(
@@ -79,22 +80,42 @@ class ProgressDialog {
     _messageStyle = messageTextStyle ?? _messageStyle;
     _progressTextStyle = progressTextStyle ?? _progressTextStyle;
 
-    _dialog.update();
+    if (_isShowing) _dialog.update();
   }
 
   bool isShowing() {
     return _isShowing;
   }
 
-  void hide() {
+  void dismiss() {
     if (_isShowing) {
       try {
         _isShowing = false;
-        Navigator.of(_dismissingContext).pop();
-        debugPrint('ProgressDialog dismissed');
+        if (Navigator.of(_dismissingContext).canPop()) {
+          Navigator.of(_dismissingContext).pop();
+          if (_showLogs) debugPrint('ProgressDialog dismissed');
+        } else {
+          if (_showLogs) debugPrint('Cant pop ProgressDialog');
+        }
       } catch (_) {}
     } else {
-      debugPrint('ProgressDialog already dismissed');
+      if (_showLogs) debugPrint('ProgressDialog already dismissed');
+    }
+  }
+
+  Future<bool> hide() {
+    if (_isShowing) {
+      try {
+        _isShowing = false;
+        Navigator.of(_dismissingContext).pop(true);
+        if (_showLogs) debugPrint('ProgressDialog dismissed');
+        return Future.value(true);
+      } catch (_) {
+        return Future.value(false);
+      }
+    } else {
+      if (_showLogs) debugPrint('ProgressDialog already dismissed');
+      return Future.value(false);
     }
   }
 
@@ -103,7 +124,7 @@ class ProgressDialog {
       _dialog = new _Body();
       _isShowing = true;
 
-      debugPrint('ProgressDialog shown');
+      if (_showLogs) debugPrint('ProgressDialog shown');
 
       showDialog<dynamic>(
         context: _context,
@@ -127,7 +148,7 @@ class ProgressDialog {
         },
       );
     } else {
-      debugPrint("ProgressDialog already shown/showing");
+      if (_showLogs) debugPrint("ProgressDialog already shown/showing");
     }
   }
 }
@@ -154,12 +175,7 @@ class _BodyState extends State<_Body> {
   @override
   void dispose() {
     _isShowing = false;
-    debugPrint('ProgressDialog dismissed by back button');
-    if (Navigator.of(_dismissingContext).canPop()) {
-      try {
-        Navigator.of(_dismissingContext).pop();
-      } catch (_) {}
-    }
+    if (_showLogs) debugPrint('ProgressDialog dismissed by back button');
     super.dispose();
   }
 
