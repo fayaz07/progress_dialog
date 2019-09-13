@@ -125,7 +125,7 @@ pr.hide().then((isHidden) {
 
 </ol>
 
-> Navigating to next screens must be done, after the completion of Future - hide(). [See here for example](https://gist.github.com/fayaz07/52dfe04d9f8594501465f169aa6ef6b6)
+> Navigating to next screens must be done after the completion of Future - hide(). [See here for example](https://gist.github.com/fayaz07/52dfe04d9f8594501465f169aa6ef6b6)
 
 ### Check if progress dialog is showing
 
@@ -151,7 +151,7 @@ If you don't like to configure/style the dialog and continue with the default st
 | ProgressWidget      |    Double_rings_loding_indicator |
 | MessageTextStyle    |    color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600 |
 | ProgressTextStyle   |    color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400 |
-/ showLogs            /    false /
+| showLogs            |    false |
 
 #### Well let's discuss limits for configuring it
 
