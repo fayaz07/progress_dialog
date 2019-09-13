@@ -15,7 +15,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 
 <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo.gif" alt="Demo"/> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo_1.gif" alt="Demo" />
 
----
+
 
 ## Installation
 [![Pub](https://img.shields.io/badge/pub-1.2.0-blue)](https://pub.dev/packages/progress_dialog)
@@ -28,7 +28,7 @@ dependencies:
 
 ## How to use
 
----
+
 
 Import the package in your dart file
 
