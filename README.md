@@ -28,6 +28,10 @@ dependencies:
 
 ## How to use
 
+---
+
+Import the package in your dart file
+
 ```dart
 import 'package:progress_dialog/progress_dialog.dart';
 ```
