@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="progress_dialog">progress_dialog</h1>
+<p>A light weight package to show progress dialog. As it is a stateful widget, you can change the text shown on the dialog dynamically.</p>
+<p><a href="https://github.com/fayaz07/progress_dialog"><img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Sponsor!"></a> &nbsp; <a href="https://www.linkedin.com/in/fayaz07"><img src="https://img.shields.io/badge/LinkedIn-in-0e76a8" alt="LinkedIn"></a> &nbsp; <a href="https://github.com/fayaz07"><img src="https://img.shields.io/github/followers/fayaz07?style=social" alt="Follow"></a> &nbsp; <a href="https://github.com/fayaz07/progress_dialog/fork"><img src="https://img.shields.io/github/forks/fayaz07/progress_dialog?style=social" alt="Fork"></a> &nbsp; <a href="https://github.com/fayaz07/progress_dialog/star"><img src="https://img.shields.io/github/stars/fayaz07/progress_dialog?style=social" alt="Star"></a> &nbsp; <a href="https://github.com/fayaz07/progress_dialog/"><img src="https://img.shields.io/github/watchers/fayaz07/progress_dialog?style=social" alt="Watches"></a></p>
+<p><a href="https://pub.dev/packages/progress_dialog"><img src="https://img.shields.io/badge/Get%20library-pub-blue" alt="Get the library"></a> &nbsp; <a href="example.html"><img src="https://img.shields.io/badge/Example-Ex-success" alt="Example"></a></p>
+<h2 id="supported-dart-versions">Supported Dart Versions</h2>
+<p><strong>Dart SDK version &gt;= 2.1.0</strong></p>
+<h2 id="demo">Demo</h2>
+<p><img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress_dialog_1.png" alt="Normal dialog Demo" width="35%" height="35%"> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/progress_dialog_2.png" alt="Download dialog Demo" width="35%" height="35%"></p>
+<h2 id="installation">Installation</h2>
+<p><a href="https://pub.dev/packages/progress_dialog"><img src="https://img.shields.io/badge/pub-1.2.0-blue" alt="Pub"></a></p>
+<p>Add the Package</p>
+<pre class=" language-yaml"><code class="prism  language-yaml"><span class="token key atrule">dependencies</span><span class="token punctuation">:</span>
+  <span class="token key atrule">progress_dialog</span><span class="token punctuation">:</span> ^1.2.0
+</code></pre>
+<h2 id="how-to-use">How to use</h2>
+<p>Import the package in your dart file</p>
+<pre class=" language-dart"><code class="prism  language-dart"><span class="token keyword">import</span> <span class="token string">'package:progress_dialog/progress_dialog.dart'</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Create an instance of ProgressDialog</p>
+<pre class=" language-dart"><code class="prism  language-dart">ProgressDialog pr<span class="token punctuation">;</span>
+</code></pre>
+<p>Initialise the <strong>pr</strong> object inside the <strong>build()</strong> method passing context to it</p>
+<ol>
+<li> Initialize the ProgressDialog object <br>  
+</li></ol><pre class=" language-dart"><code class="prism  language-dart">pr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProgressDialog</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<li> By default it is a normal dialog to show some message, if you would like to use it to show percentage of progress done, specify the optional <b>type</b> parameter and specify if you want your dialog to dismiss when back button is pressed <b>isDismissible</b> parameter (Optional) <br>
+</li><pre class=" language-dart"><code class="prism  language-dart"><span class="token comment">//For normal dialog</span>
+pr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProgressDialog</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>type<span class="token punctuation">:</span> ProgressDialogType<span class="token punctuation">.</span>Normal<span class="token punctuation">,</span> isDismissible<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token operator">/</span><span class="token boolean">false</span><span class="token punctuation">,</span> showLogs<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token operator">/</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+<span class="token comment">//For showing progress percentage</span>
+pr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProgressDialog</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>type<span class="token punctuation">:</span> ProgressDialogType<span class="token punctuation">.</span>Download<span class="token punctuation">,</span> isDismissible<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token operator">/</span><span class="token boolean">false</span><span class="token punctuation">,</span> showLogs<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token operator">/</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<li>Style the progress dialog (Optional)<br>
+</li><pre class=" language-dart"><code class="prism  language-dart">pr<span class="token punctuation">.</span><span class="token function">style</span><span class="token punctuation">(</span>
+  message<span class="token punctuation">:</span> <span class="token string">'Downloading file...'</span><span class="token punctuation">,</span>
+  borderRadius<span class="token punctuation">:</span> <span class="token number">10.0</span><span class="token punctuation">,</span>
+  backgroundColor<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>white<span class="token punctuation">,</span>
+  progressWidget<span class="token punctuation">:</span> <span class="token function">CircularProgressIndicator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  elevation<span class="token punctuation">:</span> <span class="token number">10.0</span><span class="token punctuation">,</span>
+  insetAnimCurve<span class="token punctuation">:</span> Curves<span class="token punctuation">.</span>easeInOut<span class="token punctuation">,</span>
+  progress<span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+  maxProgress<span class="token punctuation">:</span> <span class="token number">100.0</span><span class="token punctuation">,</span>
+  progressTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+     color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">13.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w400<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  messageTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+     color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">19.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w600<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-note"><code class="prism  language-note">Note: You don't need to use all parameters, all of them are optional
+</code></pre>
+
+<li>Showing the progress dialog<br>
+</li><pre class=" language-dart"><code class="prism  language-dart">pr<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<li>
+Dynamically update the content shown out there <br>
+</li><pre class=" language-dart"><code class="prism  language-dart">pr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>
+  progress<span class="token punctuation">:</span> <span class="token number">50.0</span><span class="token punctuation">,</span>
+  message<span class="token punctuation">:</span> <span class="token string">"Please wait..."</span><span class="token punctuation">,</span>
+  progressWidget<span class="token punctuation">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>
+    padding<span class="token punctuation">:</span> EdgeInsets<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token number">8.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> child<span class="token punctuation">:</span> <span class="token function">CircularProgressIndicator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  maxProgress<span class="token punctuation">:</span> <span class="token number">100.0</span><span class="token punctuation">,</span>
+  progressTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+    color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">13.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w400<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  messageTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+    color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">19.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w600<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-note"><code class="prism  language-note">Note: You don't need to use all parameters, all of them are optional
+</code></pre>
+
+<li>
+Dismissing the progress dialog<br>
+</li><pre class=" language-dart"><code class="prism  language-dart">pr<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>isHidden<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">print</span><span class="token punctuation">(</span>isHidden<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+  
+
+<blockquote>
+<p>Navigating to next screens must be done after the completion of Future - hide(). <a href="https://gist.github.com/fayaz07/52dfe04d9f8594501465f169aa6ef6b6">See here for example</a></p>
+</blockquote>
+<h3 id="check-if-progress-dialog-is-showing">Check if progress dialog is showing</h3>
+<pre class=" language-dart"><code class="prism  language-dart">bool isProgressDialogShowing <span class="token operator">=</span> pr<span class="token punctuation">.</span><span class="token function">isShowing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>isProgressDialogShowing<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<hr>
+<h2 id="demo-1">Demo</h2>
+<p><img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/pd_demo_nd.gif" alt="Normal dialog Demo"> <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/pd_demo_dd.gif" alt="Download dialog Demo"></p>
+<h3 id="default-configurationstyles">Default configuration/styles</h3>
+<p>If you don’t like to configure/style the dialog and continue with the default style, it’s okay but just have a look at our default configuration.</p>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dismissible</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td>ProgressDialogType</td>
+<td align="center">ProgressDialogType.Normal</td>
+</tr>
+<tr>
+<td>BackgroundColor</td>
+<td align="center">Colors.white</td>
+</tr>
+<tr>
+<td>BorderRadius</td>
+<td align="center">RoundedRectangularBorder(radius: 8.0)</td>
+</tr>
+<tr>
+<td>AnimationCurve</td>
+<td align="center">Curves.easeInOut</td>
+</tr>
+<tr>
+<td>Elevation</td>
+<td align="center">8.0</td>
+</tr>
+<tr>
+<td>ProgressWidget</td>
+<td align="center">Double_rings_loding_indicator</td>
+</tr>
+<tr>
+<td>MessageTextStyle</td>
+<td align="center">color: Colors.black, fontSize: 19.0, fontWeight: FontWeight.w600</td>
+</tr>
+<tr>
+<td>ProgressTextStyle</td>
+<td align="center">color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400</td>
+</tr>
+<tr>
+<td>showLogs</td>
+<td align="center">false</td>
+</tr>
+</tbody>
+</table><h4 id="well-lets-discuss-limits-for-configuring-it">Well let’s discuss limits for configuring it</h4>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th align="center">Can be updated during instantiating</th>
+<th align="center">Can be updated during styling</th>
+<th align="center">Can be updated during dialog is shown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dismissible</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td>ProgressDialogType</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td>BackgroundColor</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td>BorderRadius</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td>AnimationCurve</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td>Elevation</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+</tr>
+<tr>
+<td>ProgressWidget</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td>MessageTextStyle</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td>ProgressTextStyle</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td>ShowLogs</td>
+<td align="center">Yes</td>
+<td align="center">No</td>
+<td align="center">No</td>
+</tr>
+</tbody>
+</table><hr>
+<h3 id="want-to-contribute">Want to contribute?</h3>
+<p>Pull requests and issues are always welcome!</p>
+<h4 id="how-to-contribute">How to contribute?</h4>
+<ol>
+  <li> Fork the <a href="https://github.com/fayaz07/progress_dialog">repository</a></li>
+  <li> Clone it to your local machine </li>
+  <li> Open the project in your favourite editor </li>  
+  <li> Open cmd/terminal and run <b>flutter clean</b> and then <b>flutter packages get</b> </li>
+  <li> Make the changes </li>
+  <li> Create a <b>Pull Request</b> </li>
+</ol>
+<h4 id="view-the-issues-here">View the issues <a href="https://github.com/fayaz07/progress_dialog/issues">here</a></h4>
+<h4 id="this-library-is-only-tested-for-android-ios-contributors-are-most-welcome">This library is only tested for Android, iOS contributors are most welcome</h4>
+<hr>
+<p>Loading indicator -&gt; <a href="https://loading.io/">https://loading.io/</a></p>
+</div>
+</body>
+
+</html>
