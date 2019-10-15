@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="complete-example-for-normal-progress-dialog">Complete Example for Normal Progress Dialog</h2>
+<pre class=" language-dart"><code class="prism  language-dart"><span class="token keyword">import</span> <span class="token string">'package:flutter/material.dart'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'package:progress_dialog/progress_dialog.dart'</span><span class="token punctuation">;</span>
+
+ProgressDialog pr<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">runApp</span><span class="token punctuation">(</span><span class="token function">MaterialApp</span><span class="token punctuation">(</span>
+    home<span class="token punctuation">:</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyApp</span> <span class="token keyword">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  double percentage <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+
+  <span class="token metadata symbol">@override</span>
+  Widget <span class="token function">build</span><span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    pr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProgressDialog</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>type<span class="token punctuation">:</span> ProgressDialogType<span class="token punctuation">.</span>Normal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    pr<span class="token punctuation">.</span><span class="token function">style</span><span class="token punctuation">(</span>message<span class="token punctuation">:</span> <span class="token string">'Showing some progress...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">//Optional</span>
+    pr<span class="token punctuation">.</span><span class="token function">style</span><span class="token punctuation">(</span>
+          message<span class="token punctuation">:</span> <span class="token string">'Please wait...'</span><span class="token punctuation">,</span>
+          borderRadius<span class="token punctuation">:</span> <span class="token number">10.0</span><span class="token punctuation">,</span>
+          backgroundColor<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>white<span class="token punctuation">,</span>
+          progressWidget<span class="token punctuation">:</span> <span class="token function">CircularProgressIndicator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          elevation<span class="token punctuation">:</span> <span class="token number">10.0</span><span class="token punctuation">,</span>
+          insetAnimCurve<span class="token punctuation">:</span> Curves<span class="token punctuation">.</span>easeInOut<span class="token punctuation">,</span>
+          progressTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+              color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">13.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w400<span class="token punctuation">)</span><span class="token punctuation">,</span>
+          messageTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+              color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">19.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w600<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>    
+
+    <span class="token keyword">return</span> <span class="token function">Scaffold</span><span class="token punctuation">(</span>
+      body<span class="token punctuation">:</span> <span class="token function">Center</span><span class="token punctuation">(</span>
+        child<span class="token punctuation">:</span> <span class="token function">RaisedButton</span><span class="token punctuation">(</span>
+            child<span class="token punctuation">:</span> <span class="token function">Text</span><span class="token punctuation">(</span>
+              <span class="token string">'Show Dialog'</span><span class="token punctuation">,</span>
+              style<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>white<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>blue<span class="token punctuation">,</span>
+            onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              pr<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+              Future<span class="token punctuation">.</span><span class="token function">delayed</span><span class="token punctuation">(</span><span class="token function">Duration</span><span class="token punctuation">(</span>seconds<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>onValue<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"PR status  ${pr.isShowing()}"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>pr<span class="token punctuation">.</span><span class="token function">isShowing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                  pr<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>isHidden<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">print</span><span class="token punctuation">(</span>isHidden<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"PR status  ${pr.isShowing()}"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h2 id="complete-example-for-download-progress-dialog">Complete Example for Download Progress Dialog</h2>
+<pre class=" language-dart"><code class="prism  language-dart"><span class="token keyword">import</span> <span class="token string">'package:flutter/material.dart'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'package:progress_dialog/progress_dialog.dart'</span><span class="token punctuation">;</span>
+
+ProgressDialog pr<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">runApp</span><span class="token punctuation">(</span><span class="token function">MaterialApp</span><span class="token punctuation">(</span>
+    home<span class="token punctuation">:</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyApp</span> <span class="token keyword">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  double percentage <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+
+  <span class="token metadata symbol">@override</span>
+  Widget <span class="token function">build</span><span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    pr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProgressDialog</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> type<span class="token punctuation">:</span> ProgressDialogType<span class="token punctuation">.</span>Download<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pr<span class="token punctuation">.</span><span class="token function">style</span><span class="token punctuation">(</span>message<span class="token punctuation">:</span> <span class="token string">'Downloading file...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">//Optional</span>
+    pr<span class="token punctuation">.</span><span class="token function">style</span><span class="token punctuation">(</span>
+          message<span class="token punctuation">:</span> <span class="token string">'Downloading file...'</span><span class="token punctuation">,</span>
+          borderRadius<span class="token punctuation">:</span> <span class="token number">10.0</span><span class="token punctuation">,</span>
+          backgroundColor<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>white<span class="token punctuation">,</span>
+          progressWidget<span class="token punctuation">:</span> <span class="token function">CircularProgressIndicator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          elevation<span class="token punctuation">:</span> <span class="token number">10.0</span><span class="token punctuation">,</span>
+          insetAnimCurve<span class="token punctuation">:</span> Curves<span class="token punctuation">.</span>easeInOut<span class="token punctuation">,</span>
+          progress<span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+          maxProgress<span class="token punctuation">:</span> <span class="token number">100.0</span><span class="token punctuation">,</span>
+          progressTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+              color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">13.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w400<span class="token punctuation">)</span><span class="token punctuation">,</span>
+          messageTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+              color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">19.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w600<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">return</span> <span class="token function">Scaffold</span><span class="token punctuation">(</span>
+      body<span class="token punctuation">:</span> <span class="token function">Center</span><span class="token punctuation">(</span>
+        child<span class="token punctuation">:</span> <span class="token function">RaisedButton</span><span class="token punctuation">(</span>
+            child<span class="token punctuation">:</span> <span class="token function">Text</span><span class="token punctuation">(</span>
+              <span class="token string">'Show Dialog'</span><span class="token punctuation">,</span>
+              style<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>white<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>blue<span class="token punctuation">,</span>
+            onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              pr<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+              Future<span class="token punctuation">.</span><span class="token function">delayed</span><span class="token punctuation">(</span><span class="token function">Duration</span><span class="token punctuation">(</span>seconds<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>onvalue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                percentage <span class="token operator">=</span> percentage <span class="token operator">+</span> <span class="token number">30.0</span><span class="token punctuation">;</span>
+                <span class="token function">print</span><span class="token punctuation">(</span>percentage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                
+                pr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>
+                  progress<span class="token punctuation">:</span> percentage<span class="token punctuation">,</span>
+                  message<span class="token punctuation">:</span> <span class="token string">"Please wait..."</span><span class="token punctuation">,</span>
+                  progressWidget<span class="token punctuation">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>
+                      padding<span class="token punctuation">:</span> EdgeInsets<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token number">8.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> child<span class="token punctuation">:</span> <span class="token function">CircularProgressIndicator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                  maxProgress<span class="token punctuation">:</span> <span class="token number">100.0</span><span class="token punctuation">,</span>
+                  progressTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+                      color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">13.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w400<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                  messageTextStyle<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>
+                      color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>black<span class="token punctuation">,</span> fontSize<span class="token punctuation">:</span> <span class="token number">19.0</span><span class="token punctuation">,</span> fontWeight<span class="token punctuation">:</span> FontWeight<span class="token punctuation">.</span>w600<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                
+                Future<span class="token punctuation">.</span><span class="token function">delayed</span><span class="token punctuation">(</span><span class="token function">Duration</span><span class="token punctuation">(</span>seconds<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  percentage <span class="token operator">=</span> percentage <span class="token operator">+</span> <span class="token number">30.0</span><span class="token punctuation">;</span>
+                  pr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>
+                      progress<span class="token punctuation">:</span> percentage<span class="token punctuation">,</span> message<span class="token punctuation">:</span> <span class="token string">"Few more seconds..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token function">print</span><span class="token punctuation">(</span>percentage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  Future<span class="token punctuation">.</span><span class="token function">delayed</span><span class="token punctuation">(</span><span class="token function">Duration</span><span class="token punctuation">(</span>seconds<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    percentage <span class="token operator">=</span> percentage <span class="token operator">+</span> <span class="token number">30.0</span><span class="token punctuation">;</span>
+                    pr<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>progress<span class="token punctuation">:</span> percentage<span class="token punctuation">,</span> message<span class="token punctuation">:</span> <span class="token string">"Almost done..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">print</span><span class="token punctuation">(</span>percentage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                    Future<span class="token punctuation">.</span><span class="token function">delayed</span><span class="token punctuation">(</span><span class="token function">Duration</span><span class="token punctuation">(</span>seconds<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                      pr<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>isHidden<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                         <span class="token function">print</span><span class="token punctuation">(</span>isHidden<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                      percentage <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h2 id="complete-example-for-switching-between-to-screens">Complete Example for Switching between to Screens</h2>
+<pre class=" language-dart"><code class="prism  language-dart"><span class="token keyword">import</span> <span class="token string">'package:flutter/material.dart'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'package:progress_dialog/progress_dialog.dart'</span><span class="token punctuation">;</span>
+
+ProgressDialog pr<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">runApp</span><span class="token punctuation">(</span><span class="token function">MaterialApp</span><span class="token punctuation">(</span>
+    home<span class="token punctuation">:</span> <span class="token function">FirstScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">FirstScreen</span> <span class="token keyword">extends</span> <span class="token class-name">StatefulWidget</span> <span class="token punctuation">{</span>
+  <span class="token metadata symbol">@override</span>
+  _FirstScreenState <span class="token function">createState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">_FirstScreenState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">_FirstScreenState</span> <span class="token keyword">extends</span> <span class="token class-name">State</span><span class="token operator">&lt;</span>FirstScreen<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  ProgressDialog pr<span class="token punctuation">;</span>
+
+  <span class="token metadata symbol">@override</span>
+  Widget <span class="token function">build</span><span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ProgressDialog</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pr<span class="token punctuation">.</span><span class="token function">style</span><span class="token punctuation">(</span>message<span class="token punctuation">:</span> <span class="token string">'Please wait...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token function">Scaffold</span><span class="token punctuation">(</span>
+      body<span class="token punctuation">:</span> <span class="token function">Center</span><span class="token punctuation">(</span>
+        child<span class="token punctuation">:</span> <span class="token function">RaisedButton</span><span class="token punctuation">(</span>
+          child<span class="token punctuation">:</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token string">'Show dialog and go to next screen'</span><span class="token punctuation">,</span>
+              style<span class="token punctuation">:</span> <span class="token function">TextStyle</span><span class="token punctuation">(</span>color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>white<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>blueAccent<span class="token punctuation">,</span>
+          onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            pr<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Future<span class="token punctuation">.</span><span class="token function">delayed</span><span class="token punctuation">(</span><span class="token function">Duration</span><span class="token punctuation">(</span>seconds<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              pr<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">whenComplete</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Navigator<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">CupertinoPageRoute</span><span class="token punctuation">(</span>
+                    builder<span class="token punctuation">:</span> <span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">SecondScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SecondScreen</span> <span class="token keyword">extends</span> <span class="token class-name">StatefulWidget</span> <span class="token punctuation">{</span>
+  <span class="token metadata symbol">@override</span>
+  _SecondScreenState <span class="token function">createState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">_SecondScreenState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">_SecondScreenState</span> <span class="token keyword">extends</span> <span class="token class-name">State</span><span class="token operator">&lt;</span>SecondScreen<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token metadata symbol">@override</span>
+  Widget <span class="token function">build</span><span class="token punctuation">(</span>BuildContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">Scaffold</span><span class="token punctuation">(</span>
+      body<span class="token punctuation">:</span> <span class="token function">Center</span><span class="token punctuation">(</span>child<span class="token punctuation">:</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token string">'I am second screen'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<blockquote>
+<p>Please ignore if the above contains any unoptimized code, it’s just for an example</p>
+</blockquote>
+<h2 id="demo">Demo</h2>
+<p><img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo.gif" alt="Normal Progress" width="324" height="576">  <img src="https://raw.githubusercontent.com/fayaz07/progress_dialog/master/demo_1.gif" alt="Download Progress" width="324" height="576"></p>
+</div>
+</body>
+
+</html>
