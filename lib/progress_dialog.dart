@@ -9,6 +9,7 @@ double _progress = 0.0, _maxProgress = 100.0;
 bool _isShowing = false;
 BuildContext _context, _dismissingContext;
 ProgressDialogType _progressDialogType;
+bool _percentageDownload;
 bool _barrierDismissible = true, _showLogs = false;
 
 TextStyle _progressTextStyle = TextStyle(
@@ -33,6 +34,7 @@ class ProgressDialog {
     _context = context;
     _progressDialogType = type ?? ProgressDialogType.Normal;
     _barrierDismissible = isDismissible ?? true;
+    _percentageDownload = _percentageDownload ?? false;
     _showLogs = showLogs ?? false;
   }
 
@@ -202,7 +204,7 @@ class _BodyState extends State<_Body> {
                       top: 30.0,
                     ),
                     Positioned(
-                      child: Text("$_progress/$_maxProgress",
+                      child:_percentageDownload ? Text("${_progressCalculate().toString()} %") : Text("$_progress/$_maxProgress",
                           style: _progressTextStyle),
                       bottom: 10.0,
                       right: 10.0,
@@ -213,5 +215,10 @@ class _BodyState extends State<_Body> {
         const SizedBox(width: 10.0)
       ]),
     );
+  }
+
+  int _progressCalculate(){
+    var calculatePresentase = (_progress / 100 ) * 100;
+    return calculatePresentase.round();
   }
 }
