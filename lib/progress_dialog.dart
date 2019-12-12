@@ -111,6 +111,7 @@ class ProgressDialog {
         if (_showLogs) debugPrint('ProgressDialog dismissed');
         return Future.value(true);
       } catch (_) {
+         _isShowing = true;
         return Future.value(false);
       }
     } else {
