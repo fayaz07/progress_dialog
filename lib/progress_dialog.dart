@@ -120,14 +120,14 @@ class ProgressDialog {
     }
   }
 
-  void show() {
+  void show() async{
     if (!_isShowing) {
       _dialog = new _Body();
       _isShowing = true;
 
       if (_showLogs) debugPrint('ProgressDialog shown');
 
-      showDialog<dynamic>(
+      await showDialog<dynamic>(
         context: _context,
         barrierDismissible: false,
         builder: (BuildContext context) {
