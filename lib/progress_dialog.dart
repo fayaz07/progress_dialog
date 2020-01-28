@@ -119,36 +119,41 @@ class ProgressDialog {
     }
   }
 
-  void show() {
+  Future<bool> show() async {
     if (!_isShowing) {
-      _dialog = new _Body();
-      _isShowing = true;
-
-      if (_showLogs) debugPrint('ProgressDialog shown');
-
-      showDialog<dynamic>(
-        context: _context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          _dismissingContext = context;
-          return WillPopScope(
-            onWillPop: () {
-              return Future.value(_barrierDismissible);
-            },
-            child: Dialog(
-                backgroundColor: _backgroundColor,
-                insetAnimationCurve: _insetAnimCurve,
-                insetAnimationDuration: Duration(milliseconds: 100),
-                elevation: _dialogElevation,
-                shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(_borderRadius))),
-                child: _dialog),
-          );
-        },
-      );
+      try {
+        _dialog = new _Body();
+        showDialog<dynamic>(
+          context: _context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            _dismissingContext = context;
+            return WillPopScope(
+              onWillPop: () async => _barrierDismissible,
+              child: Dialog(
+                  backgroundColor: _backgroundColor,
+                  insetAnimationCurve: _insetAnimCurve,
+                  insetAnimationDuration: Duration(milliseconds: 100),
+                  elevation: _dialogElevation,
+                  shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(_borderRadius))),
+                  child: _dialog),
+            );
+          },
+        );
+        // Delaying the function for 200 milliseconds
+        // [Default transitionDuration of DialogRoute]
+        await Future.delayed(Duration(milliseconds: 200));
+        if (_showLogs) debugPrint('ProgressDialog shown');
+        _isShowing = true;
+        return true;
+      } catch (_) {
+        return false;
+      }
     } else {
       if (_showLogs) debugPrint("ProgressDialog already shown/showing");
+      return false;
     }
   }
 }
