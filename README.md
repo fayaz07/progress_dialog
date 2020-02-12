@@ -24,7 +24,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 Add the Package
 ```yaml
 dependencies:
-  progress_dialog: ^1.2.0
+  progress_dialog: ^1.2.1
 ```
 
 ## How to use
@@ -91,7 +91,7 @@ Note: You don't need to use all parameters, all of them are optional
 <li>Showing the progress dialog<br>
   
 ```dart
-pr.show();
+await pr.show();
 ```
 </li>
 
