@@ -125,7 +125,7 @@ class ProgressDialog {
         _dialog = new _Body();
         showDialog<dynamic>(
           context: _context,
-          barrierDismissible: false,
+          barrierDismissible: _barrierDismissible,
           builder: (BuildContext context) {
             _dismissingContext = context;
             return WillPopScope(
