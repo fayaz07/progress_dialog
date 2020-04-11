@@ -6,6 +6,8 @@ enum ProgressDialogType { Normal, Download }
 String _dialogMessage = "Loading...";
 double _progress = 0.0, _maxProgress = 100.0;
 
+TextAlign _textAlign = TextAlign.left;
+
 bool _isShowing = false;
 BuildContext _context, _dismissingContext;
 ProgressDialogType _progressDialogType;
@@ -45,6 +47,7 @@ class ProgressDialog {
       TextStyle progressTextStyle,
       TextStyle messageTextStyle,
       double elevation,
+      TextAlign textAlign,
       double borderRadius,
       Curve insetAnimCurve}) {
     if (_isShowing) return;
@@ -61,6 +64,7 @@ class ProgressDialog {
     _dialogElevation = elevation ?? _dialogElevation;
     _borderRadius = borderRadius ?? _borderRadius;
     _insetAnimCurve = insetAnimCurve ?? _insetAnimCurve;
+    _textAlign = textAlign ?? _textAlign;
   }
 
   void update(
@@ -87,41 +91,27 @@ class ProgressDialog {
     return _isShowing;
   }
 
-  void dismiss() {
-    if (_isShowing) {
-      try {
+  Future<bool> hide() async {
+    try {
+      if (_isShowing) {
         _isShowing = false;
-        if (Navigator.of(_dismissingContext).canPop()) {
-          Navigator.of(_dismissingContext).pop();
-          if (_showLogs) debugPrint('ProgressDialog dismissed');
-        } else {
-          if (_showLogs) debugPrint('Cant pop ProgressDialog');
-        }
-      } catch (_) {}
-    } else {
-      if (_showLogs) debugPrint('ProgressDialog already dismissed');
-    }
-  }
-
-  Future<bool> hide() {
-    if (_isShowing) {
-      try {
-        _isShowing = false;
-        Navigator.of(_dismissingContext).pop(true);
+        Navigator.of(_dismissingContext).pop();
         if (_showLogs) debugPrint('ProgressDialog dismissed');
         return Future.value(true);
-      } catch (_) {
+      } else {
+        if (_showLogs) debugPrint('ProgressDialog already dismissed');
         return Future.value(false);
       }
-    } else {
-      if (_showLogs) debugPrint('ProgressDialog already dismissed');
+    } catch (err) {
+      debugPrint('Seems there is an issue hiding dialog');
+      debugPrint(err);
       return Future.value(false);
     }
   }
 
   Future<bool> show() async {
-    if (!_isShowing) {
-      try {
+    try {
+      if (!_isShowing) {
         _dialog = new _Body();
         showDialog<dynamic>(
           context: _context,
@@ -148,11 +138,14 @@ class ProgressDialog {
         if (_showLogs) debugPrint('ProgressDialog shown');
         _isShowing = true;
         return true;
-      } catch (_) {
+      } else {
+        if (_showLogs) debugPrint("ProgressDialog already shown/showing");
         return false;
       }
-    } else {
-      if (_showLogs) debugPrint("ProgressDialog already shown/showing");
+    } catch (err) {
+      _isShowing = false;
+      debugPrint('Exception while showing the dialog');
+      debugPrint(err);
       return false;
     }
   }
@@ -198,8 +191,11 @@ class _BodyState extends State<_Body> {
         const SizedBox(width: 15.0),
         Expanded(
           child: _progressDialogType == ProgressDialogType.Normal
-              ? Text(_dialogMessage,
-                  textAlign: TextAlign.justify, style: _messageStyle)
+              ? Text(
+                  _dialogMessage,
+                  textAlign: _textAlign,
+                  style: _messageStyle,
+                )
               : Stack(
                   children: <Widget>[
                     Positioned(
