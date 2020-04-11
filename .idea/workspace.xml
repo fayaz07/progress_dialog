@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bad80ee9-7329-4f4b-8d42-298d211f225a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="bad80ee9-7329-4f4b-8d42-298d211f225a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +28,7 @@
     <option name="width" value="960" />
     <option name="height" value="772" />
   </component>
+  <component name="ProjectId" id="1aOBkk5eJKgPRcjd2GXnqUBofbK" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -137,7 +134,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586596153320</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Changed readme">
+      <created>1586596549513</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1586596549513</updated>
+    </task>
+    <task id="LOCAL-00009" summary="changed docs dir to doc, removed author name in pubspec.yaml">
+      <created>1586596631993</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586596631993</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -169,7 +180,9 @@
     <MESSAGE value="fixed description, changed readme" />
     <MESSAGE value="added param for text alignment, default is set to TextAlign.left" />
     <MESSAGE value="Added custom body usage and also param for aligning the progress widget" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added custom body usage and also param for aligning the progress widget" />
+    <MESSAGE value="Changed readme" />
+    <MESSAGE value="changed docs dir to doc, removed author name in pubspec.yaml" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed docs dir to doc, removed author name in pubspec.yaml" />
   </component>
   <component name="masterDetails">
     <states>
