@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bad80ee9-7329-4f4b-8d42-298d211f225a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/lib/issues/issue_44.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/progress_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/progress_dialog.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -122,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1555951972083</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added param for text alignment, default is set to TextAlign.left">
+      <created>1586594506630</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586594506630</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -152,7 +161,8 @@
     <MESSAGE value="Updated dart version" />
     <MESSAGE value="Bug fixes and update" />
     <MESSAGE value="fixed description, changed readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed description, changed readme" />
+    <MESSAGE value="added param for text alignment, default is set to TextAlign.left" />
+    <option name="LAST_COMMIT_MESSAGE" value="added param for text alignment, default is set to TextAlign.left" />
   </component>
   <component name="masterDetails">
     <states>

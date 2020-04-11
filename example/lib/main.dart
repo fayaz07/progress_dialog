@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
+//import '../../lib/progress_dialog.dart';
+
 ProgressDialog pr;
 
 void main() {
@@ -17,15 +19,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 //    pr = new ProgressDialog(context,
 //        type: ProgressDialogType.Normal, isDismissible: false);
-    pr = new ProgressDialog(context, type: ProgressDialogType.Download);
+//    pr = new ProgressDialog(context, type: ProgressDialogType.Download);
+
+// Custom body test
+    pr = ProgressDialog(
+      context,
+      type: ProgressDialogType.Normal,
+      isDismissible: true,
+      customBody: LinearProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+        backgroundColor: Colors.white,
+      ),
+    );
 
     pr.style(
-      message: 'Downloading file...',
+//      message: 'Downloading file...',
+      message:
+          'Lets dump some huge text into the progress dialog and check whether it can handle the huge text. If it works then not you or me, flutter is awesome',
       borderRadius: 10.0,
       backgroundColor: Colors.white,
       elevation: 10.0,
       insetAnimCurve: Curves.easeInOut,
       progress: 0.0,
+      progressWidgetAlignment: Alignment.center,
       maxProgress: 100.0,
       progressTextStyle: TextStyle(
           color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),
@@ -41,8 +57,8 @@ class MyApp extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             color: Colors.blue,
-            onPressed: () {
-              pr.show();
+            onPressed: () async {
+              await pr.show();
 
               Future.delayed(Duration(seconds: 2)).then((onvalue) {
                 percentage = percentage + 30.0;
