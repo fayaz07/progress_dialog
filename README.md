@@ -24,7 +24,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 Add the Package
 ```yaml
 dependencies:
-  progress_dialog: ^1.2.1
+  progress_dialog: ^1.2.2
 ```
 
 ## How to use
@@ -56,13 +56,13 @@ pr = new ProgressDialog(context);
 
 ```dart
 //For normal dialog
-pr = new ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true/false, showLogs: true/false);
+pr = ProgressDialog(context,type: ProgressDialogType.Normal, isDismissible: true/false, showLogs: true/false);
     
 //For showing progress percentage
-pr = new ProgressDialog(context,type: ProgressDialogType.Download, isDismissible: true/false, showLogs: true/false);
+pr =  ProgressDialog(context,type: ProgressDialogType.Download, isDismissible: true/false, showLogs: true/false);
 ```
 </li>
-
+> Note: Please initialize the ```ProgressDialog```, where you have availability of the context
   
 <li>Style the progress dialog (Optional)<br/>
 
@@ -124,9 +124,12 @@ Dismissing the progress dialog<br/>
 pr.hide().then((isHidden) {
   print(isHidden);
 });
+
+// or
+await pr.hide();
 ```
 
-</li>  
+</li>
 
 </ol>
 
@@ -139,7 +142,23 @@ bool isProgressDialogShowing = pr.isShowing();
 print(isProgressDialogShowing);
 ```
 
+### Use custom body
+```dart
+    pr = ProgressDialog(
+      context,
+      type: ProgressDialogType.Normal,
+      isDismissible: true,
+      /// your body here
+      customBody: LinearProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+        backgroundColor: Colors.white,
+      ),
+    );
+```
+
+
 ---
+
 
 ## Demo
 

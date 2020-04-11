@@ -1,3 +1,7 @@
+## 1.2.2
+* Added param for aligning text message
+* Added custom body feature
+
 ## 1.2.1
 * Added **await** for showing the dialog
 * Added dialog show time delay
