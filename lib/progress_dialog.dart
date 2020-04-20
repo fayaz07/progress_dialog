@@ -24,6 +24,7 @@ TextStyle _progressTextStyle = TextStyle(
 double _dialogElevation = 8.0, _borderRadius = 8.0;
 Color _backgroundColor = Colors.white;
 Curve _insetAnimCurve = Curves.easeInOut;
+EdgeInsets _dialogPadding = const EdgeInsets.all(8.0);
 
 Widget _progressWidget = Image.asset(
   'assets/double_ring_loading_io.gif',
@@ -58,6 +59,7 @@ class ProgressDialog {
       TextAlign textAlign,
       double borderRadius,
       Curve insetAnimCurve,
+      EdgeInsets padding,
       Alignment progressWidgetAlignment}) {
     if (_isShowing) return;
     if (_progressDialogType == ProgressDialogType.Download) {
@@ -75,6 +77,7 @@ class ProgressDialog {
     _insetAnimCurve = insetAnimCurve ?? _insetAnimCurve;
     _textAlign = textAlign ?? _textAlign;
     _progressWidget = child ?? _progressWidget;
+    _dialogPadding = padding ?? _dialogPadding;
     _progressWidgetAlignment =
         progressWidgetAlignment ?? _progressWidgetAlignment;
   }
@@ -191,56 +194,62 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100.0,
-      child: _customBody ??
-          Row(
+    return _customBody ??
+        Container(
+          padding: _dialogPadding,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const SizedBox(width: 8.0),
-              Align(
-                alignment: _progressWidgetAlignment,
-                child: SizedBox(
-                  width: 60.0,
-                  height: 60.0,
-                  child: _progressWidget,
-                ),
-              ),
-              const SizedBox(width: 8.0),
-              Expanded(
-                child: _progressDialogType == ProgressDialogType.Normal
-                    ? Text(
-                        _dialogMessage,
-                        textAlign: _textAlign,
-                        style: _messageStyle,
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            SizedBox(height: 8.0),
-                            Expanded(
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                      child: Text(_dialogMessage,
-                                          style: _messageStyle)),
-                                ],
-                              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const SizedBox(width: 8.0),
+                  Align(
+                    alignment: _progressWidgetAlignment,
+                    child: SizedBox(
+                      width: 60.0,
+                      height: 60.0,
+                      child: _progressWidget,
+                    ),
+                  ),
+                  const SizedBox(width: 8.0),
+                  Expanded(
+                    child: _progressDialogType == ProgressDialogType.Normal
+                        ? Text(
+                            _dialogMessage,
+                            textAlign: _textAlign,
+                            style: _messageStyle,
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                SizedBox(height: 8.0),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                          child: Text(_dialogMessage,
+                                              style: _messageStyle)),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 4.0),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Text("$_progress/$_maxProgress",
+                                      style: _progressTextStyle),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 4.0),
-                            Align(
-                              alignment: Alignment.bottomRight,
-                              child: Text("$_progress/$_maxProgress",
-                                  style: _progressTextStyle),
-                            ),
-                          ],
-                        ),
-                      ),
+                          ),
+                  ),
+                  const SizedBox(width: 8.0)
+                ],
               ),
-              const SizedBox(width: 8.0)
             ],
           ),
-    );
+        );
   }
 }
