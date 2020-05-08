@@ -119,7 +119,6 @@ class ProgressDialog {
       }
     } catch (err) {
       debugPrint('Seems there is an issue hiding dialog');
-      debugPrint(err);
       return Future.value(false);
     }
   }
