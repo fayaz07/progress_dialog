@@ -119,7 +119,7 @@ class ProgressDialog {
       }
     } catch (err) {
       debugPrint('Seems there is an issue hiding dialog');
-      debugPrint(err);
+      debugPrint(err.toString());
       return Future.value(false);
     }
   }
@@ -160,7 +160,7 @@ class ProgressDialog {
     } catch (err) {
       _isShowing = false;
       debugPrint('Exception while showing the dialog');
-      debugPrint(err);
+      debugPrint(err.toString());
       return false;
     }
   }
