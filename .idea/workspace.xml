@@ -153,7 +153,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586596631993</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="github pages issue fix">
+      <created>1586597000608</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1586597000608</updated>
+    </task>
+    <task id="LOCAL-00011" summary="github pages issue fix">
+      <created>1586597066800</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1586597066800</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -170,7 +184,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -187,7 +203,8 @@
     <MESSAGE value="Added custom body usage and also param for aligning the progress widget" />
     <MESSAGE value="Changed readme" />
     <MESSAGE value="changed docs dir to doc, removed author name in pubspec.yaml" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed docs dir to doc, removed author name in pubspec.yaml" />
+    <MESSAGE value="github pages issue fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="github pages issue fix" />
   </component>
   <component name="masterDetails">
     <states>
