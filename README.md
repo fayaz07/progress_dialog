@@ -24,7 +24,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 Add the Package
 ```yaml
 dependencies:
-  progress_dialog: ^1.2.2
+  progress_dialog: ^1.2.3
 ```
 
 ## How to use
@@ -36,18 +36,13 @@ Import the package in your dart file
 ```dart
 import 'package:progress_dialog/progress_dialog.dart';
 ```
-Create an instance of ProgressDialog
-```dart
-ProgressDialog pr;
-```
-
-Initialise the **pr** object inside the **build()** method passing context to it
+Create and initialise a **ProgressDialog** object inside the **build()** method passing context to it
 
 <ol>
 <li> Initialize the ProgressDialog object <br>  
 
 ```dart
-pr = new ProgressDialog(context);
+final ProgressDialog pr = ProgressDialog(context);
 ```
 </li>
 

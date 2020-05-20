@@ -1,4 +1,7 @@
 ## 1.2.2
+* Fixed issue FlutterError is not a subtype of string
+
+## 1.2.2
 * Added param for aligning text message
 * Added custom body feature
 
