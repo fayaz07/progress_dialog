@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 enum ProgressDialogType { Normal, Download }
 
@@ -10,6 +11,8 @@ Widget _customBody;
 
 TextAlign _textAlign = TextAlign.left;
 Alignment _progressWidgetAlignment = Alignment.centerLeft;
+
+TextDirection _direction = TextDirection.ltr;
 
 bool _isShowing = false;
 BuildContext _context, _dismissingContext;
@@ -36,14 +39,16 @@ class ProgressDialog {
 
   ProgressDialog(BuildContext context,
       {ProgressDialogType type,
-      bool isDismissible,
-      bool showLogs,
-      Widget customBody}) {
+        bool isDismissible,
+        bool showLogs,
+        TextDirection textDirection,
+        Widget customBody}) {
     _context = context;
     _progressDialogType = type ?? ProgressDialogType.Normal;
     _barrierDismissible = isDismissible ?? true;
     _showLogs = showLogs ?? false;
     _customBody = customBody ?? null;
+    _direction = textDirection ?? TextDirection.ltr;
   }
 
   void style(
@@ -194,57 +199,67 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final loader = Align(
+      alignment: _progressWidgetAlignment,
+      child: SizedBox(
+        width: 60.0,
+        height: 60.0,
+        child: _progressWidget,
+      ),
+    );
+
+    final text = Expanded(
+      child: _progressDialogType == ProgressDialogType.Normal
+          ? Text(
+        _dialogMessage,
+        textAlign: _textAlign,
+        style: _messageStyle,
+        textDirection: _direction,
+      )
+          : Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            SizedBox(height: 8.0),
+            Row(
+              children: <Widget>[
+                Expanded(
+                    child: Text(
+                      _dialogMessage,
+                      style: _messageStyle,
+                      textDirection: _direction,
+                    )),
+              ],
+            ),
+            SizedBox(height: 4.0),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                "$_progress/$_maxProgress",
+                style: _progressTextStyle,
+                textDirection: _direction,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
     return _customBody ??
         Container(
           padding: _dialogPadding,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              // row body
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const SizedBox(width: 8.0),
-                  Align(
-                    alignment: _progressWidgetAlignment,
-                    child: SizedBox(
-                      width: 60.0,
-                      height: 60.0,
-                      child: _progressWidget,
-                    ),
-                  ),
+                  _direction == TextDirection.ltr ? loader : text,
                   const SizedBox(width: 8.0),
-                  Expanded(
-                    child: _progressDialogType == ProgressDialogType.Normal
-                        ? Text(
-                            _dialogMessage,
-                            textAlign: _textAlign,
-                            style: _messageStyle,
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                SizedBox(height: 8.0),
-                                Expanded(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                          child: Text(_dialogMessage,
-                                              style: _messageStyle)),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(height: 4.0),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Text("$_progress/$_maxProgress",
-                                      style: _progressTextStyle),
-                                ),
-                              ],
-                            ),
-                          ),
-                  ),
+                  _direction == TextDirection.rtl ? loader : text,
                   const SizedBox(width: 8.0)
                 ],
               ),

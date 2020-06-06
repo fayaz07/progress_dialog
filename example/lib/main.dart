@@ -24,12 +24,13 @@ class MyApp extends StatelessWidget {
 // Custom body test
     pr = ProgressDialog(
       context,
-      type: ProgressDialogType.Normal,
+      type: ProgressDialogType.Download,
+      textDirection: TextDirection.rtl,
       isDismissible: true,
-      customBody: LinearProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
-        backgroundColor: Colors.white,
-      ),
+//      customBody: LinearProgressIndicator(
+//        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+//        backgroundColor: Colors.white,
+//      ),
     );
 
     pr.style(

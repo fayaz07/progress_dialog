@@ -10,7 +10,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 
 
 ## Supported Dart Versions
-**Dart SDK version >= 2.1.0**
+**Dart SDK version >= 2.7.0**
 
 
 ## Demo
@@ -24,7 +24,7 @@ A light weight package to show progress dialog. As it is a stateful widget, you 
 Add the Package
 ```yaml
 dependencies:
-  progress_dialog: ^1.2.3
+  progress_dialog: ^1.2.4
 ```
 
 ## How to use
@@ -70,6 +70,7 @@ pr.style(
   elevation: 10.0,
   insetAnimCurve: Curves.easeInOut,
   progress: 0.0,
+  textDirection: TextDirection.rtl,
   maxProgress: 100.0,
   progressTextStyle: TextStyle(
      color: Colors.black, fontSize: 13.0, fontWeight: FontWeight.w400),

@@ -1,4 +1,8 @@
-## 1.2.2
+## 1.2.4
+* Fixed issue RenderBox overflow
+* Added rtl and ltr support
+
+## 1.2.3
 * Fixed issue FlutterError is not a subtype of string
 
 ## 1.2.2
