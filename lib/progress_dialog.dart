@@ -11,6 +11,7 @@ Widget _customBody;
 
 TextAlign _textAlign = TextAlign.left;
 Alignment _progressWidgetAlignment = Alignment.centerLeft;
+Alignment _dialogAlignment = Alignment.center;
 
 TextDirection _direction = TextDirection.ltr;
 
@@ -56,21 +57,23 @@ class ProgressDialog {
     _autoHide = autoHide;
   }
 
-  void style(
-      {Widget child,
-      double progress,
-      double maxProgress,
-      String message,
-      Widget progressWidget,
-      Color backgroundColor,
-      TextStyle progressTextStyle,
-      TextStyle messageTextStyle,
-      double elevation,
-      TextAlign textAlign,
-      double borderRadius,
-      Curve insetAnimCurve,
-      EdgeInsets padding,
-      Alignment progressWidgetAlignment}) {
+  void style({
+    Widget child,
+    double progress,
+    double maxProgress,
+    String message,
+    Widget progressWidget,
+    Color backgroundColor,
+    TextStyle progressTextStyle,
+    TextStyle messageTextStyle,
+    double elevation,
+    TextAlign textAlign,
+    double borderRadius,
+    Curve insetAnimCurve,
+    EdgeInsets padding,
+    Alignment progressWidgetAlignment,
+    Alignment dialogAlignment,
+  }) {
     if (_isShowing) return;
     if (_progressDialogType == ProgressDialogType.Download) {
       _progress = progress ?? _progress;
@@ -90,6 +93,7 @@ class ProgressDialog {
     _dialogPadding = padding ?? _dialogPadding;
     _progressWidgetAlignment =
         progressWidgetAlignment ?? _progressWidgetAlignment;
+    _dialogAlignment = dialogAlignment ?? _dialogAlignment;
   }
 
   void update(
@@ -259,7 +263,11 @@ class _BodyState extends State<_Body> {
     return _customBody ??
         Container(
           padding: _dialogPadding,
+          alignment: _dialogAlignment,
+          width: double.maxFinite,
+          height: 88,
           child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               // row body
