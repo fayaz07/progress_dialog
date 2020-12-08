@@ -39,11 +39,13 @@ class ProgressDialog {
 
   ProgressDialog(BuildContext context,
       {ProgressDialogType type,
+        String message,
         bool isDismissible,
         bool showLogs,
         TextDirection textDirection,
         Widget customBody}) {
     _context = context;
+    _dialogMessage = message ?? _dialogMessage;
     _progressDialogType = type ?? ProgressDialogType.Normal;
     _barrierDismissible = isDismissible ?? true;
     _showLogs = showLogs ?? false;
