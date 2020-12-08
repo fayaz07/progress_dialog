@@ -11,6 +11,7 @@ Widget _customBody;
 
 TextAlign _textAlign = TextAlign.left;
 Alignment _progressWidgetAlignment = Alignment.centerLeft;
+Alignment _dialogAlignment = Alignment.center;
 
 TextDirection _direction = TextDirection.ltr;
 
@@ -34,38 +35,45 @@ Widget _progressWidget = Image.asset(
   package: 'progress_dialog',
 );
 
+/// For Auto Hide Dialog after some Duration.
+Duration _autoHide;
+
 class ProgressDialog {
   _Body _dialog;
 
   ProgressDialog(BuildContext context,
       {ProgressDialogType type,
-        bool isDismissible,
-        bool showLogs,
-        TextDirection textDirection,
-        Widget customBody}) {
+      bool isDismissible,
+      bool showLogs,
+      Duration autoHide,
+      TextDirection textDirection,
+      Widget customBody}) {
     _context = context;
     _progressDialogType = type ?? ProgressDialogType.Normal;
     _barrierDismissible = isDismissible ?? true;
     _showLogs = showLogs ?? false;
     _customBody = customBody ?? null;
     _direction = textDirection ?? TextDirection.ltr;
+    _autoHide = autoHide;
   }
 
-  void style(
-      {Widget child,
-      double progress,
-      double maxProgress,
-      String message,
-      Widget progressWidget,
-      Color backgroundColor,
-      TextStyle progressTextStyle,
-      TextStyle messageTextStyle,
-      double elevation,
-      TextAlign textAlign,
-      double borderRadius,
-      Curve insetAnimCurve,
-      EdgeInsets padding,
-      Alignment progressWidgetAlignment}) {
+  void style({
+    Widget child,
+    double progress,
+    double maxProgress,
+    String message,
+    Widget progressWidget,
+    Color backgroundColor,
+    TextStyle progressTextStyle,
+    TextStyle messageTextStyle,
+    double elevation,
+    TextAlign textAlign,
+    double borderRadius,
+    Curve insetAnimCurve,
+    EdgeInsets padding,
+    Alignment progressWidgetAlignment,
+    Alignment dialogAlignment,
+  }) {
     if (_isShowing) return;
     if (_progressDialogType == ProgressDialogType.Download) {
       _progress = progress ?? _progress;
@@ -85,6 +93,7 @@ class ProgressDialog {
     _dialogPadding = padding ?? _dialogPadding;
     _progressWidgetAlignment =
         progressWidgetAlignment ?? _progressWidgetAlignment;
+    _dialogAlignment = dialogAlignment ?? _dialogAlignment;
   }
 
   void update(
@@ -157,6 +166,11 @@ class ProgressDialog {
         await Future.delayed(Duration(milliseconds: 200));
         if (_showLogs) debugPrint('ProgressDialog shown');
         _isShowing = true;
+
+        if (_autoHide != null) {
+          Future.delayed(_autoHide).then((value) => hide());
+        }
+
         return true;
       } else {
         if (_showLogs) debugPrint("ProgressDialog already shown/showing");
@@ -211,45 +225,49 @@ class _BodyState extends State<_Body> {
     final text = Expanded(
       child: _progressDialogType == ProgressDialogType.Normal
           ? Text(
-        _dialogMessage,
-        textAlign: _textAlign,
-        style: _messageStyle,
-        textDirection: _direction,
-      )
+              _dialogMessage,
+              textAlign: _textAlign,
+              style: _messageStyle,
+              textDirection: _direction,
+            )
           : Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            SizedBox(height: 8.0),
-            Row(
-              children: <Widget>[
-                Expanded(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(height: 8.0),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                          child: Text(
+                        _dialogMessage,
+                        style: _messageStyle,
+                        textDirection: _direction,
+                      )),
+                    ],
+                  ),
+                  SizedBox(height: 4.0),
+                  Align(
+                    alignment: Alignment.bottomRight,
                     child: Text(
-                      _dialogMessage,
-                      style: _messageStyle,
+                      "$_progress/$_maxProgress",
+                      style: _progressTextStyle,
                       textDirection: _direction,
-                    )),
-              ],
-            ),
-            SizedBox(height: 4.0),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "$_progress/$_maxProgress",
-                style: _progressTextStyle,
-                textDirection: _direction,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
 
     return _customBody ??
         Container(
           padding: _dialogPadding,
+          alignment: _dialogAlignment,
+          width: double.maxFinite,
+          height: 88,
           child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               // row body
