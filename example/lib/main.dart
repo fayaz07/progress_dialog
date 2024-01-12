@@ -4,7 +4,7 @@ import 'package:progress_dialog/progress_dialog.dart';
 
 //import '../../lib/progress_dialog.dart';
 
-ProgressDialog pr;
+late ProgressDialog pr;
 
 void main() {
   runApp(MaterialApp(
@@ -52,12 +52,15 @@ class MyApp extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
             child: Text(
               'Show Dialog',
               style: TextStyle(color: Colors.white),
             ),
-            color: Colors.blue,
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.blue,
+              backgroundColor: Colors.white,
+            ),
             onPressed: () async {
               await pr.show();
 
@@ -122,7 +125,7 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
-  ProgressDialog pr;
+  late ProgressDialog pr;
 
   @override
   Widget build(BuildContext context) {
@@ -131,10 +134,13 @@ class _FirstScreenState extends State<FirstScreen> {
 
     return Scaffold(
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Text('Show dialog and go to next screen',
               style: TextStyle(color: Colors.white)),
-          color: Colors.blueAccent,
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.blueAccent,
+            backgroundColor: Colors.white,
+          ),
           onPressed: () {
             pr.show();
             Future.delayed(Duration(seconds: 3)).then((value) {
