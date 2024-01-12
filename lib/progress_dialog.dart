@@ -1,22 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
 enum ProgressDialogType { Normal, Download }
 
 String _dialogMessage = "Loading...";
 double _progress = 0.0, _maxProgress = 100.0;
 
-Widget _customBody;
+late Widget _customBody;
 
 TextAlign _textAlign = TextAlign.left;
 Alignment _progressWidgetAlignment = Alignment.centerLeft;
+Alignment _dialogAlignment = Alignment.center;
 
 TextDirection _direction = TextDirection.ltr;
 
 bool _isShowing = false;
-BuildContext _context, _dismissingContext;
-ProgressDialogType _progressDialogType;
+late BuildContext _context, _dismissingContext;
+late ProgressDialogType _progressDialogType;
 bool _barrierDismissible = true, _showLogs = false;
 
 TextStyle _progressTextStyle = TextStyle(
@@ -34,38 +33,45 @@ Widget _progressWidget = Image.asset(
   package: 'progress_dialog',
 );
 
+/// For Auto Hide Dialog after some Duration.
+late Duration _autoHide;
+
 class ProgressDialog {
-  _Body _dialog;
+  late _Body _dialog;
 
   ProgressDialog(BuildContext context,
-      {ProgressDialogType type,
-        bool isDismissible,
-        bool showLogs,
-        TextDirection textDirection,
-        Widget customBody}) {
+      {ProgressDialogType type = ProgressDialogType.Normal,
+      bool? isDismissible,
+      bool showLogs = false,
+      Duration autoHide = const Duration(seconds: 2),
+      TextDirection textDirection = TextDirection.ltr,
+      Widget? customBody}) {
     _context = context;
-    _progressDialogType = type ?? ProgressDialogType.Normal;
+    _progressDialogType = type;
     _barrierDismissible = isDismissible ?? true;
-    _showLogs = showLogs ?? false;
-    _customBody = customBody ?? null;
-    _direction = textDirection ?? TextDirection.ltr;
+    _showLogs = showLogs;
+    _customBody = (customBody ?? null)!;
+    _direction = textDirection;
+    _autoHide = autoHide;
   }
 
-  void style(
-      {Widget child,
-      double progress,
-      double maxProgress,
-      String message,
-      Widget progressWidget,
-      Color backgroundColor,
-      TextStyle progressTextStyle,
-      TextStyle messageTextStyle,
-      double elevation,
-      TextAlign textAlign,
-      double borderRadius,
-      Curve insetAnimCurve,
-      EdgeInsets padding,
-      Alignment progressWidgetAlignment}) {
+  void style({
+    Widget? child,
+    double? progress,
+    double? maxProgress,
+    String? message,
+    Widget? progressWidget,
+    Color? backgroundColor,
+    TextStyle? progressTextStyle,
+    TextStyle? messageTextStyle,
+    double? elevation,
+    TextAlign? textAlign,
+    double? borderRadius,
+    Curve? insetAnimCurve,
+    EdgeInsets? padding,
+    Alignment? progressWidgetAlignment,
+    Alignment? dialogAlignment,
+  }) {
     if (_isShowing) return;
     if (_progressDialogType == ProgressDialogType.Download) {
       _progress = progress ?? _progress;
@@ -85,15 +91,16 @@ class ProgressDialog {
     _dialogPadding = padding ?? _dialogPadding;
     _progressWidgetAlignment =
         progressWidgetAlignment ?? _progressWidgetAlignment;
+    _dialogAlignment = dialogAlignment ?? _dialogAlignment;
   }
 
   void update(
-      {double progress,
-      double maxProgress,
-      String message,
-      Widget progressWidget,
-      TextStyle progressTextStyle,
-      TextStyle messageTextStyle}) {
+      {double? progress,
+      double? maxProgress,
+      String? message,
+      Widget? progressWidget,
+      TextStyle? progressTextStyle,
+      TextStyle? messageTextStyle}) {
     if (_progressDialogType == ProgressDialogType.Download) {
       _progress = progress ?? _progress;
     }
@@ -157,6 +164,9 @@ class ProgressDialog {
         await Future.delayed(Duration(milliseconds: 200));
         if (_showLogs) debugPrint('ProgressDialog shown');
         _isShowing = true;
+
+        Future.delayed(_autoHide).then((value) => hide());
+      
         return true;
       } else {
         if (_showLogs) debugPrint("ProgressDialog already shown/showing");
@@ -211,45 +221,49 @@ class _BodyState extends State<_Body> {
     final text = Expanded(
       child: _progressDialogType == ProgressDialogType.Normal
           ? Text(
-        _dialogMessage,
-        textAlign: _textAlign,
-        style: _messageStyle,
-        textDirection: _direction,
-      )
+              _dialogMessage,
+              textAlign: _textAlign,
+              style: _messageStyle,
+              textDirection: _direction,
+            )
           : Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            SizedBox(height: 8.0),
-            Row(
-              children: <Widget>[
-                Expanded(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(height: 8.0),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                          child: Text(
+                        _dialogMessage,
+                        style: _messageStyle,
+                        textDirection: _direction,
+                      )),
+                    ],
+                  ),
+                  SizedBox(height: 4.0),
+                  Align(
+                    alignment: Alignment.bottomRight,
                     child: Text(
-                      _dialogMessage,
-                      style: _messageStyle,
+                      "$_progress/$_maxProgress",
+                      style: _progressTextStyle,
                       textDirection: _direction,
-                    )),
-              ],
-            ),
-            SizedBox(height: 4.0),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "$_progress/$_maxProgress",
-                style: _progressTextStyle,
-                textDirection: _direction,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
 
     return _customBody ??
         Container(
           padding: _dialogPadding,
+          alignment: _dialogAlignment,
+          width: double.maxFinite,
+          height: 88,
           child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               // row body
